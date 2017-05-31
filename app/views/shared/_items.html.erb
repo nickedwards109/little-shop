@@ -3,12 +3,12 @@
     <% group.each do |item| %>
       <div class="col-md-3 item-container item_<%= item.id %>">
         <%# <%= item.image_url %1> %>
-        <strong> <%= item.title %></strong><br>
+        <strong><%= item.title %></strong><br>
         <%= item.description %>
         <br>
-        <%= item.price  %>
-        <%= button_to  "#{item.title}", item_path(item) %>
-        <%= button_to "Add to Cart", carts_path(item_id: item.id), method: :post %>
+        $<%= item.price  %><br>
+        <%= link_to  "#{item.title}", category_item_path(item.category, item), class: "btn btn-success" %>
+        <%= button_to "Add to Cart", carts_path(item_id: item.id), method: :post, class: "btn btn-default"%>
       </div>
     <% end %>
   </div>
