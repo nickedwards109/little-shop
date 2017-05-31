@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 20170531002820) do
     t.string "title"
     t.text "description"
     t.decimal "price"
-    t.string "stock_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "category_id"
