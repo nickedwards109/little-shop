@@ -4,7 +4,7 @@ class CreateItems < ActiveRecord::Migration[5.1]
       t.string :title
       t.text :description
       t.decimal :price
-      t.string :stock_status
+      t.integer :inventory_status, default: 0
 
       t.timestamps
     end
