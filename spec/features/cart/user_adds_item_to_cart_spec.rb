@@ -9,5 +9,6 @@ feature "Cart" do
       click_button "Add to Cart"
     end
     expect(page).to have_content("You have added 1 #{item.title} to your cart.")
+    expect(page).to have_current_path(items_path)
   end
 end
