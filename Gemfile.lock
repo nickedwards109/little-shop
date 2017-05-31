@@ -45,6 +45,9 @@ GEM
       execjs
     bcrypt (3.1.11)
     bindex (0.5.0)
+    bootstrap (4.0.0.alpha6)
+      autoprefixer-rails (>= 6.0.3)
+      sass (>= 3.4.19)
     bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
     builder (3.2.3)
@@ -76,6 +79,8 @@ GEM
     factory_girl_rails (4.8.0)
       factory_girl (~> 4.8.0)
       railties (>= 3.0.0)
+    faker (1.7.3)
+      i18n (~> 0.5)
     ffi (1.9.18)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
@@ -227,11 +232,13 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   bcrypt (~> 3.1.7)
+  bootstrap (~> 4.0.0alpha3)
   bootstrap-sass (~> 3.1.0)
   byebug
   capybara (~> 2.13.0)
   coffee-rails (~> 4.2)
   factory_girl_rails
+  faker
   haml
   html2haml
   jbuilder (~> 2.5)
@@ -254,4 +261,4 @@ DEPENDENCIES
   will_paginate (~> 3.1.0)
 
 BUNDLED WITH
-   1.14.6
+   1.15.0
