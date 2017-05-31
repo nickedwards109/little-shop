@@ -1,13 +1,14 @@
 <% @items.in_groups_of(4, false) do |group| %>
   <div class="row">
     <% group.each do |item| %>
-      <div class="col-md-3 item-container">
+      <div class="col-md-3 item-container item_<%= item.id %>">
         <%# <%= item.image_url %1> %>
         <strong> <%= item.title %></strong><br>
         <%= item.description %>
         <br>
         <%= item.price  %>
         <%= button_to  "#{item.title}", item_path(item) %>
+        <%= button_to "Add to Cart", carts_path(item_id: item.id), method: :post %>
       </div>
     <% end %>
   </div>
