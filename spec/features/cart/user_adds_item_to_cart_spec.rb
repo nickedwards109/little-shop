@@ -16,7 +16,7 @@ feature "Cart" do
     within(".item_#{item.id}") do
       click_button "Add to Cart"
     end
-    
+
     expect(page).to have_content("Your cart now contains 2 Bespoke Beard Oil Brushes.")
     expect(page).to have_content("Cart (2)")
   end
