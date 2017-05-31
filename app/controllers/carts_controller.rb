@@ -9,4 +9,8 @@ class CartsController < ApplicationController
     flash[:notice] = "Your cart now contains #{pluralize(session[:cart][id], item.title)}."
     redirect_to items_path
   end
+
+  def show
+    
+  end
 end
