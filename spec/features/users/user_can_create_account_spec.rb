@@ -16,4 +16,16 @@ RSpec.feature "User", type: :feature do
     expect(user.name).to eq("Bob Saget")
     expect(user.username). to eq("bsg")
   end
+
+  scenario "can get to login page from root and click to create account" do
+    visit ('/')
+    expect(page).to have_content("Login")
+
+    click_on "Login"
+    expect(page).to have_current_path(login_path)
+    expect(page).to have_content("Create Account")
+
+    click_on "Create Account"
+    expect(page).to have_current_path(new_user_path)
+  end
 end

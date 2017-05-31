@@ -1,1 +1,13 @@
-Login page
+Login Page
+
+= form_for(@user, url: login_path) do |f|
+  %p 
+    = f.label :username
+    = f.text_field :username
+  %br
+  %p 
+    = f.label :password 
+    = f.password_field :password
+  = f.submit 'Submit Login', method: "post"
+%br
+= link_to "Create Account", new_user_path
