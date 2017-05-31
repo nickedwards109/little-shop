@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Items Index' do
+RSpec.feature 'Items Index' do
   scenario 'visitor visits the items index page' do
     item_1 = create(:item)
     item_2 = create(:item)

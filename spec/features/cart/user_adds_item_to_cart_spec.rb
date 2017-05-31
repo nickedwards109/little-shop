@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature "Cart" do
+RSpec.feature "Cart" do
   scenario "visitor adds items to their cart" do
     item = create(:item, title: "Bespoke Beard Oil Brush")
 
