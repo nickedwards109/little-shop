@@ -12,6 +12,6 @@ FactoryGirl.define do
       "#{n}.#{n}"
     end
 
-    stock_status "In Stock"
+    inventory_status "in-stock"
   end
 end

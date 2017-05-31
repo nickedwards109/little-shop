@@ -5,9 +5,11 @@ RSpec.describe Item, type: :model do
     it { should validate_presence_of(:title) }
     it { should validate_presence_of(:description) }
     it { should validate_presence_of(:price) }
-    it { should validate_presence_of(:stock_status) }
+    it { should validate_presence_of(:inventory_status) }
     
     it { should validate_uniqueness_of(:title) }
+
+    it { should define_enum_for(:inventory_status) }
   end
 
   describe "relationships" do

@@ -3,6 +3,8 @@ class Item < ApplicationRecord
   has_many :order_items
   has_many :orders, through: :order_items
 
-  validates :title, :description, :price, :stock_status, presence: true
+  validates :title, :description, :price, :inventory_status, presence: true
   validates :title, uniqueness: true
+
+  enum inventory_status: ["in-stock", "out-of-stock", "retired"]
 end
