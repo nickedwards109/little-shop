@@ -5,4 +5,6 @@ class Order < ApplicationRecord
   has_many :items, through: :order_items
 
   validates :status, presence: true
+
+  enum status: ["ordered", "paid", "cancelled", "completed"]
 end

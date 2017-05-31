@@ -4,4 +4,6 @@ class User < ApplicationRecord
 
   validates :name, :username, :password, :role, presence: true
   validates :username, uniqueness: true
+
+  enum role: ["visitor", "user", "admin"]
 end
