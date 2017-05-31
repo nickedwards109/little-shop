@@ -16,6 +16,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'haml'
 gem 'html2haml'
 gem 'will_paginate', '~> 3.1.0'
+gem 'bootstrap', '~> 4.0.0alpha3'
 gem 'bootstrap-sass', '~> 3.1.0'
 gem 'autoprefixer-rails'
 gem 'jquery-rails'
@@ -30,6 +31,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'selenium-webdriver'
   gem 'capybara', '~> 2.13.0'
+  gem 'faker'
 end
 
 group :development do
