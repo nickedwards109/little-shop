@@ -14,5 +14,5 @@ end
 
 
 100.times do
-  Item.create(title: Faker::Commerce.product_name, description: Faker::Hipster.paragraph, price: Faker::Commerce.price, category: Category.find(rand(1..10)), stock_status: 0)
+  Item.create(title: Faker::Commerce.product_name, description: Faker::Hipster.paragraph, price: Faker::Commerce.price, category: Category.find(rand(1..10)))
 end
