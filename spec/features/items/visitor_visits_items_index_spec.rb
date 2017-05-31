@@ -15,4 +15,17 @@ feature 'Items Index' do
     expect(page).to have_content(item_2.description)
     expect(page).to have_content(item_2.price)
   end
+
+  scenario 'visitor clicks on an item and sees individual item page' do
+    item1 = create(:item)
+
+    visit items_path
+    expect(page).to have_content(item1.title)
+    click_on(item1.title)
+    expect(page).to have_current_path(item_path(item1))
+    expect(page).to have_content(item1.title)
+    expect(page).to have_content(item1.description)
+    expect(page).to have_content(item1.price)
+    expect(page).to have_content("Buy Now!")
+  end
 end

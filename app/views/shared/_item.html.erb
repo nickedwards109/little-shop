@@ -1,0 +1,13 @@
+<strong><%= link_to @item.category.title, category_path(@item.category) %>/<%= @item.title %></strong><br>
+<div class="row">
+  <div class="col-md-2 item-picture">
+    item picture will go here
+  </div>
+  <br>
+  <div class="col-md-6 item-description">
+    <%= @item.description %>
+  </div>
+</div>
+</br>
+$<%= @item.price %><br>
+<button type="button" class="btn btn-success">Buy Now!</button>
