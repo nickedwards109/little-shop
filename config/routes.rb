@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   root 'items#index'
+
+  namespace :admin do
+    get '/dashboard', to: 'dashboard#home'
+  end
   
   resources :items, only: [:index, :show]
   resources :users, only: [:new, :create]
