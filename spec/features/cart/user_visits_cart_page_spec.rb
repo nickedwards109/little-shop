@@ -25,7 +25,7 @@ RSpec.feature "Cart" do
     item_1_subtotal = item_1.price * 2
     item_2_subtotal = item_2.price
     total = item_1_subtotal + item_2_subtotal
-    expect(page).to have_content("Subtotal: #{item_1_subtotal}")
-    expect(page).to have_content("Total: #{total}")
+    expect(page).to have_content("Subtotal: $#{item_1_subtotal}")
+    expect(page).to have_content("Total: $#{total}")
   end
 end
