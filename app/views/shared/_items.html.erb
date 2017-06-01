@@ -1,0 +1,19 @@
+<% @items.in_groups_of(4, false) do |group| %>
+  <div class="card-deck">
+    <% group.each do |item| %>
+      <div class="card"> 
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-block">
+          <h4 class="card-title"><%= item.title %></h3>
+          <p class="card-text"><%= item.description %></p>
+          <p class="card-text">$<%= item.price %></p>
+        </div>
+        <div class="card-footer item_<%= item.id %>">
+          <%= link_to  "#{item.title}", category_item_path(item.category, item), class: "btn btn-success" %>
+          <%= button_to "Add to Cart", carts_path(item_id: item.id), method: :post, class: "btn btn-default"%>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+<%= will_paginate @items %>

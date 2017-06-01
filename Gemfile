@@ -15,11 +15,13 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'haml'
 gem 'html2haml'
-gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate'
+gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem'
 gem 'bootstrap-sass', '~> 3.1.0'
 gem 'autoprefixer-rails'
 gem 'jquery-rails'
-
+gem "breadcrumbs_on_rails"
+gem 'bootstrap_form'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -30,6 +32,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'selenium-webdriver'
   gem 'capybara', '~> 2.13.0'
+  gem 'faker'
 end
 
 group :development do

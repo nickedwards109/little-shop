@@ -1,0 +1,10 @@
+<% @title="All Categories" %>
+<h1>All Categories</h1>
+<br>
+<% @categories.each do |category| %>
+  <div class="col-md-1">
+    <%= link_to "#{category.title}", category_path(category), class: "btn btn-success" %>
+  </div>
+  <br>
+<% end %>
+
