@@ -50,6 +50,7 @@ GEM
       sass (>= 3.4.19)
     bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
+    breadcrumbs_on_rails (3.0.1)
     builder (3.2.3)
     byebug (9.0.6)
     capybara (2.13.0)
@@ -232,8 +233,9 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   bcrypt (~> 3.1.7)
-  bootstrap (~> 4.0.0alpha3)
+  bootstrap (~> 4.0.0alpha5)
   bootstrap-sass (~> 3.1.0)
+  breadcrumbs_on_rails
   byebug
   capybara (~> 2.13.0)
   coffee-rails (~> 4.2)

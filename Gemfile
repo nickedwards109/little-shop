@@ -16,10 +16,11 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'haml'
 gem 'html2haml'
 gem 'will_paginate', '~> 3.1.0'
-gem 'bootstrap', '~> 4.0.0alpha3'
+gem 'bootstrap', '~> 4.0.0alpha5'
 gem 'bootstrap-sass', '~> 3.1.0'
 gem 'autoprefixer-rails'
 gem 'jquery-rails'
+gem "breadcrumbs_on_rails"
 
 
 group :development, :test do

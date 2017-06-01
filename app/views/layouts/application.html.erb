@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>LittleShop</title>
+    <title>Little Shop | <%= @title %></title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -14,7 +14,6 @@
       <% flash.each do |type, message| %>
         <%= content_tag :div, message, class: type %>
       <% end %>
-
       <%= yield %>
     </div>
     <%= render 'shared/footer' %>
