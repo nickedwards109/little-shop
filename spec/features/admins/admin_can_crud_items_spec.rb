@@ -40,4 +40,21 @@ RSpec.feature "Admin", type: :feature do
     expect(item.price).to eq(21.99)
   end
 
+  scenario "can create a new item" do
+    visit admin_dashboard_path
+    click_on('Add a New Item')
+
+    fill_in 'item[title]', with: 'toy water'
+    fill_in 'item[description]', with: 'water for children'
+    fill_in 'item[price]', with: 21.99
+    fill_in 'item[category_id]', with: 1
+    click_on('Create Item')
+
+    item = Item.find_by(title: 'toy water')
+
+    expect(page).to have_current_path(admin_items_path)
+    expect(page).to have_content(item.title)
+    expect(item).not_to be(nil)
+  end
+
 end

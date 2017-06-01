@@ -1,0 +1,18 @@
+= form_for @item, :url => admin_items_path do |f|
+  %p 
+    = f.label :title 
+    = f.text_field :title
+  %br
+  %p 
+    = f.label :description 
+    = f.text_field :description
+  %br
+  %p 
+    = f.label :price 
+    = f.number_field :price
+  %br
+  %p 
+    = f.label :category_id 
+    = f.number_field :category_id
+  %br
+  = f.submit

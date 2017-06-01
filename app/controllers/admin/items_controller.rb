@@ -4,13 +4,29 @@ class Admin::ItemsController < AuthenticateAdminController
     @items = Item.paginate(:page => params[:page], :per_page => 16)
   end
 
+  def new
+    @item = Item.new
+  end
+
+  def create
+    @item = Item.new(item_params)
+
+    if @item.save
+      flash[:item] = 'Item Created'
+      redirect_to admin_items_path
+    else
+      flash[:item] = 'Unable to Create Item'
+      render :new
+    end
+  end
+
   def edit
     @item = Item.find(params[:id])
   end
 
   def update
     @item = Item.find(params[:id])
-    @item.update_attributes(items_param)
+    @item.update_attributes(item_params)
 
     if @item.save
       flash[:item] = 'Item Updated'
@@ -23,7 +39,7 @@ class Admin::ItemsController < AuthenticateAdminController
 
   private
 
-  def items_param
+  def item_params
     params.require(:item).permit(:title, :description, :price)
   end
 end
