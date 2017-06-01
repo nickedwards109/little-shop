@@ -4,6 +4,8 @@ RSpec.feature "Admin", type: :feature do
   scenario "can view items" do
     admin = create(:user, role: "admin")
     create_list(:item, 5)
+    item1 = Item.first
+    item2 = Item.last
 
     visit(login_path)
     fill_in "user[username]", with: admin.username
@@ -14,6 +16,7 @@ RSpec.feature "Admin", type: :feature do
     click_on('View All Items')
     
     expect(page).to have_current_path(admin_items_path)
-    save_and_open_page
+    expect(page).to have_content(item1.title)
+    expect(page).to have_content(item2.title)
   end
 end
