@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   root 'items#index'
 
   resources :items, only: [:index, :show]
+  resources :categories, only: [:index, :show] do
+    resources :items, only: [:show], module: "categories"
+  end
 
   resources :carts, only: [:create]
   get '/cart', to: 'carts#show'
