@@ -1,6 +1,5 @@
-class Admin::DashboardController < AuthorizedAdminController
+class Admin::DashboardController < AuthenticateAdminController
   
   def home
-    binding.pry
   end
 end

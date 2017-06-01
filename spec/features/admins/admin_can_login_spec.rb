@@ -10,7 +10,7 @@ RSpec.feature "Admin", type: :feature do
     click_on('Submit Login')
 
     expect(page).to have_current_path('/admin/dashboard')
-    expect(page).to have_content("Logged in as #{user.username}")
+    expect(page).to have_content("Logged in as #{admin.username}")
     expect(page).not_to have_content("Login")
     expect(page).to have_content("Logout")
   end

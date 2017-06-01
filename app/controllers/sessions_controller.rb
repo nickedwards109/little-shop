@@ -24,7 +24,4 @@ class SessionsController < ApplicationController
     flash[:login] = 'Successfully Logged Out'
     redirect_to root_path
   end
-
-  def dashboard
-  end
 end

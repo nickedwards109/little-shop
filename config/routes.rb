@@ -5,6 +5,10 @@ Rails.application.routes.draw do
     get '/dashboard', to: 'dashboard#home'
   end
 
+  scope module: 'users' do
+    get '/dashboard', to: 'dashboard#home'
+  end
+
   
   resources :categories, only: [:index, :show] do
     resources :items, only: [:show], module: "categories"
@@ -21,5 +25,4 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/login', to: 'sessions#destroy'
 
-  get '/dashboard', to: 'sessions#dashboard'
 end
