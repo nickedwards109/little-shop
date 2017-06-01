@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   scope module: 'users' do
     get '/dashboard', to: 'dashboard#home'
+    resources :users, only: [:edit, :update]
   end
 
   
