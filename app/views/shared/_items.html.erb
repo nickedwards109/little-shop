@@ -1,15 +1,22 @@
 <% @items.in_groups_of(4, false) do |group| %>
-  <div class="row">
+  <div class="card-deck">
     <% group.each do |item| %>
-      <div class="col-md-3 item-container item_<%= item.id %>">
-        <%# <%= item.image_url %1> %>
-        <strong><%= item.title %></strong><br>
-        <%= item.description %>
-        <br>
-        $<%= item.price  %><br>
-        <%= link_to  "#{item.title}", category_item_path(item.category, item), class: "btn btn-success" %>
-        <%= button_to "Add to Cart", carts_path(item_id: item.id), method: :post, class: "btn btn-default"%>
+      <div class="card"> 
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-block">
+          <h4 class="card-title"> <%= item.title %> </h3>
+          <p class="card-text"> <%= item.description %></p>
+        </div>
+        <div class="card-footer">
+          <%= link_to  "#{item.title}", category_item_path(item.category, item), class: "btn btn-success" %>
+          <%= button_to "add to cart", carts_path(item_id: item.id), method: :post, class: "btn btn-default"%>
+        </div>
       </div>
     <% end %>
   </div>
 <% end %>
+<h5>
+  <center>
+    <%= will_paginate @items %>
+  </center>
+<h5>
