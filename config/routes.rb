@@ -10,7 +10,6 @@ Rails.application.routes.draw do
     resources :orders, only: [:index]
   end
 
-  
   resources :categories, only: [:index, :show] do
     resources :items, only: [:show], module: "categories"
   end
