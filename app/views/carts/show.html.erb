@@ -1,0 +1,16 @@
+<% @cart.contents.each do |item_id, quantity| %>
+  <% item = Item.find(item_id) %>
+
+    <div class="row">
+        <div class="col-md-3 item-container item_<%= item.id %>">
+          <%# <%= item.image_url %1> %>
+          <strong> <%= item.title %></strong><br>
+          <%= item.description %>
+          <br>
+          <%= item.price  %>
+          <%= button_to  "#{item.title}", item_path(item) %>
+          <%= button_to  "Remove", cart_path(item_id: item.id), method: :delete %>
+        </div>
+    </div>
+
+<% end %>

@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   end
 
   resources :carts, only: [:create]
+  get '/cart', to: 'carts#show'
+  delete '/cart', to: 'carts#destroy'
+
   resources :users, only: [:new, :create]
 
   get '/login', to: 'sessions#new'
