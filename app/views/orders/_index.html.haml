@@ -1,0 +1,13 @@
+%table.table-striped
+  %tr
+    %td Order ID
+    %td Order Status
+    %td Order Date
+  - @user.orders.reverse.each do |order|
+    %tr 
+      %td
+        = order.id.to_s 
+      %td
+        = order.status
+      %td
+        = order.created_at
