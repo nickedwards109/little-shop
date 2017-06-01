@@ -27,5 +27,8 @@ RSpec.feature "Cart" do
     total = item_1_subtotal + item_2_subtotal
     expect(page).to have_content("Subtotal: $#{item_1_subtotal}")
     expect(page).to have_content("Total: $#{total}")
+
+    click_button item_1.title
+    expect(page).to have_current_path(item_path(item_1))
   end
 end
