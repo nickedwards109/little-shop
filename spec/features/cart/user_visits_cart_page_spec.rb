@@ -15,21 +15,4 @@ RSpec.feature "Cart" do
     expect(page).to have_content("#{item.description}")
     expect(page).to have_content("#{item.price}")
   end
-
-  scenario "user removes an item from the cart page" do
-    item = create(:item, title: "Bespoke Beard Oil Brush")
-
-    visit items_path
-    within(".item_#{item.id}") do
-      click_button "Add to Cart"
-    end
-
-    click_on "Cart (1)"
-    click_on "Remove"
-    expect(page).to have_current_path(cart_path)
-    expect(page).to have_content("Successfully removed #{item.title} from your cart.")
-    expect(page).to have_content("Cart (0)")
-    click_on(item.title)
-    expect(page).to have_current_path(item_path(item))
-  end
 end
