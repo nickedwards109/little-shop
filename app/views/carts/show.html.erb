@@ -1,6 +1,5 @@
 <% @cart.contents.each do |item_id, quantity| %>
   <% item = Item.find(item_id) %>
-
     <div class="row">
         <div class="col-md-3 item-container item_<%= item.id %>">
           <%# <%= item.image_url %1> %>
@@ -9,8 +8,10 @@
           <br>
           <%= item.price  %>
           <%= button_to  "#{item.title}", item_path(item) %>
+          <div>Quantity: <%= @cart.contents[item_id] %></div>
+          <%= button_to "Reduce quantity", cart_decrement_path(item_id: item.id), method: :patch %>
+          <%= button_to "Increase quantity", cart_increment_path(item_id: item.id), method: :patch %>
           <%= button_to  "Remove", cart_path(item_id: item.id), method: :delete %>
         </div>
     </div>
-
 <% end %>

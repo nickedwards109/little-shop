@@ -21,4 +21,18 @@ class CartsController < ApplicationController
     flash[:success] = "Successfully removed #{item_link} from your cart."
     redirect_to cart_path
   end
+
+  def decrement
+    id = params[:item_id].to_s
+    item = Item.find(id)
+    @cart.contents[id] -= 1
+    redirect_to cart_path
+  end
+
+  def increment
+    id = params[:item_id].to_s
+    item = Item.find(id)
+    @cart.contents[id] += 1
+    redirect_to cart_path
+  end
 end
