@@ -9,6 +9,7 @@
           <br>
           <%= item.price  %>
           <%= button_to  "#{item.title}", item_path(item) %>
+          <%= button_to  "Remove", cart_path(item_id: item.id), method: :delete %>
         </div>
     </div>
 

@@ -11,6 +11,14 @@ class CartsController < ApplicationController
   end
 
   def show
-    
+  end
+
+  def destroy
+    id = params[:item_id].to_s
+    item = Item.find(id)
+    @cart.contents.delete(id)
+    item_link = "#{view_context.link_to(item.title, item_path(item))}"
+    flash[:success] = "Successfully removed #{item_link} from your cart."
+    redirect_to cart_path
   end
 end
