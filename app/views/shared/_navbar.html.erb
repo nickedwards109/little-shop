@@ -23,7 +23,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <% @categories.each do |category| %>
-            <%= link_to category.title, category_path(category),  class: "menu-item"%>
+            <%= link_to category.title, category_path(category),  class: "dropdown-item"%>
           <% end %>
         </div>
       </li>
