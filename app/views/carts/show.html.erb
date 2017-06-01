@@ -1,19 +1,22 @@
-<div class="row">
-  <div class="col-md-4">
+<div class="row cart-container">
+  <div class="col-md-6 card-deck">
     <% @cart.contents.each do |item_id, quantity| %>
       <% item = Item.find(item_id) %>
-            <div class="item-container item_<%= item.id %>">
-              <%# <%= item.image_url %1> %>
-              <strong> <%= item.title %></strong><br>
-              <%= item.description %>
-              <br>
-              $<%= item.price %>
-              <div>Quantity: <%= @cart.contents[item_id] %></div>
-              <div>Subtotal: $<%= @cart.dollar_subtotal(item) %></div>
-              <%= button_to  "#{item.title}", item_path(item) %>
-              <%= button_to "Reduce quantity", cart_decrement_path(item_id: item.id), method: :patch %>
-              <%= button_to "Increase quantity", cart_increment_path(item_id: item.id), method: :patch %>
-              <%= button_to  "Remove", cart_path(item_id: item.id), method: :delete %>
+            <div class="card item_<%= item.id %>">
+              <img class="card-img-top" src="..." alt="Card image cap">
+              <div class="card-block">
+                <h4 class="card-title"><%= item.title %></h4>
+                <p class="card-text"><%= item.description %></p>
+                <p class="card-text">Price: $<%= item.price %></p>
+              </div>
+              <div class="card-footer">
+                <div>Quantity: <%= @cart.contents[item_id] %></div>
+                <div>Subtotal: $<%= @cart.dollar_subtotal(item) %></div>
+                <%= button_to  "#{item.title}", item_path(item), class: "btn btn-success", method: :get %>
+                <%= button_to "Reduce quantity", cart_decrement_path(item_id: item.id), class: "btn btn-default", method: :patch %>
+                <%= button_to "Increase quantity", cart_increment_path(item_id: item.id), class: "btn btn-default", method: :patch %>
+                <%= button_to  "Remove", cart_path(item_id: item.id), class: "btn btn-default", method: :delete %>
+              </div>
             </div>
     <% end %>
   </div>
