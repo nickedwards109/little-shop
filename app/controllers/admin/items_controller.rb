@@ -9,6 +9,21 @@ class Admin::ItemsController < AuthenticateAdminController
   end
 
   def update
-    binding.pry
+    @item = Item.find(params[:id])
+    @item.update_attributes(items_param)
+
+    if @item.save
+      flash[:item] = 'Item Updated'
+      redirect_to admin_items_path
+    else
+      flash[:item] = 'Item Not Updated'
+      render :edit
+    end
+  end
+
+  private
+
+  def items_param
+    params.require(:item).permit(:title, :description, :price)
   end
 end

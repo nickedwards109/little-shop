@@ -32,6 +32,12 @@ RSpec.feature "Admin", type: :feature do
     fill_in 'item[title]', with: 'Beanie Baby'
     fill_in 'item[description]', with: 'A toy for grown men to sleep with'
     fill_in 'item[price]', with: 21.99
-    # click_on('Update Item')
+    click_on('Update Item')
+
+    item = Item.find(@item1.id)
+    expect(item.title).to eq('Beanie Baby')
+    expect(item.description).to eq('A toy for grown men to sleep with')
+    expect(item.price).to eq(21.99)
   end
+
 end
