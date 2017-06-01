@@ -1,0 +1,14 @@
+= form_for @item do |f|
+  %p 
+    = f.label :title 
+    = f.text_field :title
+  %br
+  %p 
+    = f.label :description 
+    = f.text_field :description
+  %br
+  %p 
+    = f.label :price 
+    = f.number_field :price
+  %br
+  = f.submit
