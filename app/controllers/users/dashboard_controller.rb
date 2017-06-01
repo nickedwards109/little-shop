@@ -1,6 +1,6 @@
 class Users::DashboardController < AuthenticateUserController
   
   def home
-    @user = session[:user_id]
+    @user = User.find(session[:user_id])
   end
 end

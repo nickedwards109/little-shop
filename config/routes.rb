@@ -7,7 +7,6 @@ Rails.application.routes.draw do
 
   scope module: 'users' do
     get '/dashboard', to: 'dashboard#home'
-    resources :users, only: [:edit, :update]
   end
 
   
@@ -20,7 +19,7 @@ Rails.application.routes.draw do
   get '/cart', to: 'carts#show'
   delete '/cart', to: 'carts#destroy'
 
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :edit, :update]
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

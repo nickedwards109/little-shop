@@ -2,11 +2,13 @@
   .row
     .col-md-8
       -# Here goes User account details, with link to update account.
-      %h2 @user.name
+      %h2
+      = @user.name
       %br
-      %h3 @user.username
+      %h3
+      = @user.username
     .col-md-4
-      = button_to "Edit Account", edit_user_path(@user)
+      = button_to "Edit Account", edit_user_path(@user), method: "get"
   .row
     .col-md-12
       -# Here goes User's most recent orders (last 5 pagination)
