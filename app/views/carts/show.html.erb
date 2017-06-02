@@ -22,5 +22,10 @@
   </div>
   <div class="offset-md-4 cart-summary-container">
     <div>Total: $<%= @cart.total_dollar_amount %></div>
+    <% if !user_is_authenticated? %>
+      <%= link_to "Login or Register to Checkout", login_path %>
+    <% else %>
+      <div>Checkout</div>
+    <% end %>
   </div>
 </div>
