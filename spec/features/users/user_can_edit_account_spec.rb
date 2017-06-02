@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.feature 'User', type: :feature do
   scenario 'can edit own account' do
     user = create(:user)
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(User.first)
+    binding.pry
     # visit(login_path)
     # fill_in 'user[username]', with: user.username
     # fill_in 'user[password]', with: user.password
