@@ -23,6 +23,7 @@ RSpec.feature "Admin", type: :feature do
   end
 
   scenario "can edit item" do
+    category = create(:category)
     visit admin_items_path
 
     within ".item_#{@item1.id}" do
@@ -32,12 +33,15 @@ RSpec.feature "Admin", type: :feature do
     fill_in 'item[title]', with: 'Beanie Baby'
     fill_in 'item[description]', with: 'A toy for grown men to sleep with'
     fill_in 'item[price]', with: 21.99
+    select category.title, :from => 'item[category_id]'
+    select 'out-of-stock', :from => 'item[inventory_status]'
     click_on('Update Item')
 
     item = Item.find(@item1.id)
     expect(item.title).to eq('Beanie Baby')
     expect(item.description).to eq('A toy for grown men to sleep with')
     expect(item.price).to eq(21.99)
+    expect(item.category).to eq(category)
   end
 
   scenario "can create a new item" do
@@ -50,6 +54,7 @@ RSpec.feature "Admin", type: :feature do
     fill_in 'item[description]', with: 'water for children'
     fill_in 'item[price]', with: 21.99
     select category.title, :from => 'item[category_id]'
+    select 'out-of-stock', :from => 'item[inventory_status]'
     click_on('Create Item')
 
     item = Item.find_by(title: 'toy water')
@@ -58,5 +63,4 @@ RSpec.feature "Admin", type: :feature do
     expect(page).to have_content(item.title)
     expect(item).not_to be(nil)
   end
-
 end
