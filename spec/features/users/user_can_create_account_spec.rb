@@ -28,4 +28,13 @@ RSpec.feature "User", type: :feature do
     click_on "Create Account"
     expect(page).to have_current_path(new_user_path)
   end
+
+  scenario "fails to create acccount" do
+    visit(new_user_path)
+
+    fill_in 'user[name]', with: 'Tom'
+    click_on 'Create Account'
+
+    expect(page).to have_content('Unable to Create Account')
+  end
 end

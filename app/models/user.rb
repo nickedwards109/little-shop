@@ -6,4 +6,14 @@ class User < ApplicationRecord
   validates :username, uniqueness: true
 
   enum role: ['user', 'admin']
+
+  before_save :sanitize_username
+
+  private
+
+  def sanitize_username
+    if username
+      self.username = username.downcase
+    end
+  end
 end
