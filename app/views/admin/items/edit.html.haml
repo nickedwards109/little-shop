@@ -1,0 +1,22 @@
+= form_for @item, :url => admin_item_path do |f|
+  %p 
+    = f.label :title 
+    = f.text_field :title
+  %br
+  %p 
+    = f.label :description 
+    = f.text_field :description
+  %br
+  %p 
+    = f.label :price 
+    = f.number_field :price
+  %br
+  %p 
+    = f.label 'Category'
+    = f.collection_select :category_id, Category.all, :id, :title
+  %br
+  %p 
+    = f.label :inventory_status
+    = f.select(:inventory_status, Item.inventory_statuses.keys)
+  %br
+  = f.submit
