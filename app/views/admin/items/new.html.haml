@@ -12,7 +12,7 @@
     = f.number_field :price
   %br
   %p 
-    = f.label :category_id 
-    = f.number_field :category_id
+    = f.label 'Category'
+    = f.collection_select :category_id, Category.all, :id, :title
   %br
   = f.submit

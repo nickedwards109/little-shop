@@ -41,13 +41,15 @@ RSpec.feature "Admin", type: :feature do
   end
 
   scenario "can create a new item" do
+    category = create(:category)
+
     visit admin_dashboard_path
     click_on('Add a New Item')
 
     fill_in 'item[title]', with: 'toy water'
     fill_in 'item[description]', with: 'water for children'
     fill_in 'item[price]', with: 21.99
-    fill_in 'item[category_id]', with: 1
+    select category.title, :from => 'item[category_id]'
     click_on('Create Item')
 
     item = Item.find_by(title: 'toy water')

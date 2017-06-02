@@ -10,7 +10,7 @@ class Admin::ItemsController < AuthenticateAdminController
 
   def create
     @item = Item.new(item_params)
-
+    
     if @item.save
       flash[:item] = 'Item Created'
       redirect_to admin_items_path
@@ -40,6 +40,6 @@ class Admin::ItemsController < AuthenticateAdminController
   private
 
   def item_params
-    params.require(:item).permit(:title, :description, :price)
+    params.require(:item).permit(:title, :description, :price, :category_id)
   end
 end
