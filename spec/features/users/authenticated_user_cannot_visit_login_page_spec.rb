@@ -11,4 +11,5 @@ RSpec.feature "User", type: :feature do
 
     visit login_path
     expect(page).to have_current_path(root_path)
+  end
 end
