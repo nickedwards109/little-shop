@@ -1,0 +1,19 @@
+%h3 Edit Address 
+%br
+= form_for [@user, @address] do |f|
+  %p 
+    = f.label :street_address
+    = f.text_field :street_address 
+  %p 
+    = f.label :street_address2
+    = f.text_field :street_address2
+  %p 
+    = f.label :city
+    = f.text_field :city 
+  %p 
+    = f.label :state
+    = f.text_field :state 
+  %p 
+    = f.label :zip_code
+    = f.text_field :zip_code
+  = f.submit

@@ -6,11 +6,13 @@
       %br
       %h3
       = @user.username
+      %br
     .col-md-4
-      = button_to "Edit Account", edit_user_path(@user), method: "get"
-      = button_to "Leave Dashboard", items_path, method: "get"
+      = button_to 'View Addresses', user_address_index_path(@user, @user.addresses), method: 'get'
+      = button_to 'Edit Account', edit_user_path(@user), method: 'get'
+      = button_to 'Leave Dashboard', items_path, method: 'get'
   .row
     .col-md-12
       = render partial: 'users/orders'
       %br
-      = link_to "View All Past Orders", orders_path
+      = link_to 'View All Past Orders', orders_path
