@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   scope module: 'users' do
     get '/dashboard', to: 'dashboard#home'
-    resources :orders, only: [:index]
+    resources :orders, only: [:index, :show]
   end
 
   resources :categories, only: [:index, :show] do

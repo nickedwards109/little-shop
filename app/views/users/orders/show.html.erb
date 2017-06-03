@@ -1,0 +1,5 @@
+<%= "Order id: #{@order.id}" %><br>
+items: <br>
+<% @order.items.distinct.each do |item| %>
+  <%= item.title %> x Item_quantity total price<br>
+<% end %>
