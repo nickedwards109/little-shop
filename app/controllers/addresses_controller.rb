@@ -1,18 +1,16 @@
-class AddressController < AuthenticateUserController
+class AddressesController < AuthenticateUserController
   before_action :set_address, only: [:edit, :update, :destroy]
+  before_action :set_user, only: [:new, :index, :create, :index, :edit]
 
   def new
-    binding.pry
-    @user = User.find(params[:user_id])
     @address = Address.new
   end
 
   def create
-    binding.pry
-    @address = Address.new(address_params)
+    address = @user.addresses.create(address_params)
 
-    if @address.save
-      redirect_to user_address_index_path, notice: 'Successfully Created Address'
+    if address
+      redirect_to user_addresses_path, notice: 'Successfully Created Address'
     else
       flash[:notice] = 'Unable to Create Address'
       render :new
@@ -20,16 +18,14 @@ class AddressController < AuthenticateUserController
   end
 
   def index
-    @user = User.find(params[:user_id])
   end
 
   def edit
-    @user = User.find(params[:user_id])
   end
 
   def update
     if @address.update_attributes(address_params)
-      redirect_to user_address_index_path, notice: 'Successfully Updated Address'
+      redirect_to user_addresses_path, notice: 'Successfully Updated Address'
     else
       flash[:notice] = 'Unable to Update Address'
       render :edit
@@ -38,7 +34,7 @@ class AddressController < AuthenticateUserController
 
   def destroy
     @address.destroy
-    redirect_to user_address_index_path, notice: 'Successfully Deleted Address'
+    redirect_to user_addresses_path, notice: 'Successfully Deleted Address'
   end
 
   private
@@ -50,5 +46,9 @@ class AddressController < AuthenticateUserController
 
   def set_address
     @address = Address.find(params[:id])
+  end
+
+  def set_user
+    @user = User.find(params[:user_id])
   end
 end

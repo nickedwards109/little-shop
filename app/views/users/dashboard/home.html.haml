@@ -8,7 +8,7 @@
       = @user.username
       %br
     .col-md-4
-      = button_to 'View Addresses', user_address_index_path(@user, @user.addresses), method: 'get'
+      = button_to 'View Addresses', user_addresses_path(@user, @user.addresses), method: 'get'
       = button_to 'Edit Account', edit_user_path(@user), method: 'get'
       = button_to 'Leave Dashboard', items_path, method: 'get'
   .row

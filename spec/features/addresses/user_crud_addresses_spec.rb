@@ -14,9 +14,7 @@ RSpec.feature 'Address', type: :feature do
   end
 
   scenario 'can be created' do
-    skip
-    visit(new_user_address_path)
-    
+    visit(new_user_address_path(user))
     fill_in 'address[street_address]', with: '123 Fake St'
     fill_in 'address[street_address2]', with: 'Apartment 4'
     fill_in 'address[city]', with: 'Denver'
@@ -24,7 +22,7 @@ RSpec.feature 'Address', type: :feature do
     fill_in 'address[zip_code]', with: 80202
     click_on 'Create Address'
 
-    expect(page).to have_current_path(user_address_index_path(user, user.addresses))
+    expect(page).to have_current_path(user_addresses_path(user))
     expect(page).to have_content('Successfully Created Address')
     expect(page).to have_content('123 Fake St')
     expect(page).to have_content('Apartment 4')
@@ -39,7 +37,7 @@ RSpec.feature 'Address', type: :feature do
     fill_in 'address[city]', with: 'Fort Collins'
     click_on 'Update Address'
 
-    expect(page).to have_current_path(user_address_index_path(user))
+    expect(page).to have_current_path(user_addresses_path(user))
     expect(page).to have_content('Fort Collins')
   end
 
@@ -48,7 +46,7 @@ RSpec.feature 'Address', type: :feature do
       street_address: '123 Big St', city: 'Boulder', state: 'CO', zip_code: 80202
       )
     
-    visit(user_address_index_path(user))
+    visit(user_addresses_path(user))
     within ('.edit_delete') do
       click_on ('Delete Address')
     end
