@@ -1,19 +1,20 @@
 require 'rails_helper'
 
-RSpec.feature "Admin", type: :feature do
+RSpec.feature 'Admin', type: :feature do
+  let(:admin) {create(:user, role: 'admin')}
+
   before(:each) do
-    admin = create(:user, role: "admin")
     create_list(:item, 5)
     @item1 = Item.first
     @item2 = Item.last
 
     visit(login_path)
-    fill_in "user[username]", with: admin.username
-    fill_in "user[password]", with: admin.password
+    fill_in 'user[username]', with: admin.username
+    fill_in 'user[password]', with: admin.password
     click_on('Submit Login')
   end
 
-  scenario "can view items" do
+  scenario 'can view items' do
     expect(page).to have_current_path('/admin/dashboard')
     click_on('View All Items')
     
@@ -22,12 +23,12 @@ RSpec.feature "Admin", type: :feature do
     expect(page).to have_content(@item2.title)
   end
 
-  scenario "can edit item" do
+  scenario 'can edit item' do
     category = create(:category)
     visit admin_items_path
 
     within ".item_#{@item1.id}" do
-      click_on "Edit Item"
+      click_on 'Edit Item'
     end
 
     fill_in 'item[title]', with: 'Beanie Baby'
@@ -44,7 +45,7 @@ RSpec.feature "Admin", type: :feature do
     expect(item.category).to eq(category)
   end
 
-  scenario "can create a new item" do
+  scenario 'can create a new item' do
     category = create(:category)
 
     visit admin_dashboard_path

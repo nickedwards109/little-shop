@@ -6,18 +6,14 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of(:username) }
     it { should validate_presence_of(:password) }
     it { should validate_presence_of(:role) }
-
     it { should validate_uniqueness_of(:username) }
-
+    it { should have_secure_password }
     it { should define_enum_for(:role) }
   end
 
   describe "relationships" do
-    before(:each) do
-      @user = create(:user)
-    end
-
     it "has many orders" do
+      @user = create(:user)
       expect(@user).to respond_to(:orders)
     end
   end
