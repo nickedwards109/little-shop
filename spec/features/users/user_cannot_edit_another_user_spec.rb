@@ -11,6 +11,6 @@ RSpec.feature 'User', type: :feature do
     click_on('Submit Login')
 
     visit edit_user_path(user2)
-    expect(page).to have_content("The page you were looking for doesn't exist.")
+    expect(page).to have_current_path(root_path)
   end
 end

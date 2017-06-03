@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    
+
     if @user.save
       redirect_to login_path, notice: 'Account Creation Successful!'
     else
@@ -16,17 +16,17 @@ class UsersController < ApplicationController
   end
 
   def edit
-    if session[:user_id]
+    if session[:user_id] && current_user == User.find(params[:id])
       @user = User.find(session[:user_id])
     else
       redirect_to root_path
     end
   end
-  
+
   def update
     @user = User.find(session[:user_id])
     @user.update_attributes(user_params)
-    
+
     if @user.save
       redirect_to dashboard_path, notice: 'Account Successfully Updated'
     else
