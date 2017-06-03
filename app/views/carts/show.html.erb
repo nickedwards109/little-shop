@@ -1,3 +1,4 @@
+<% @title="Cart" %>
 <div class="row cart-container">
   <div class="col-md-6 card-deck">
     <% @cart.contents.each do |item_id, quantity| %>
@@ -24,8 +25,7 @@
     <div>
       Total: $<%= @cart.total_dollar_amount %>
     <br>
-      <button class="btn btn-success">checkout button here!</button>
-    
+    <%= button_to "Place Order!", orders_path, class: "btn btn-success" %>
 
     </div>
 

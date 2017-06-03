@@ -26,7 +26,7 @@
     %ul.navbar-nav.ml-auto
       - if session[:user_id]
         - user = User.find(session[:user_id])
-        %span.navbar-text= "Logged in as #{user.username}"
+        %span.navbar-text logged in as #{link_to "#{User.find(session[:user_id]).username}", dashboard_path}
         %li.nav-item.active
           = link_to "Logout", login_path, method: "delete", class: "nav-link"
       - else
