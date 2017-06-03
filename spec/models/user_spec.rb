@@ -12,9 +12,14 @@ RSpec.describe User, type: :model do
   end
 
   describe "relationships" do
+    let(:user) {create(:user)}
+
     it "has many orders" do
-      @user = create(:user)
-      expect(@user).to respond_to(:orders)
+      expect(user).to respond_to(:orders)
+    end
+
+    it "has many address" do
+      expect(user).to respond_to(:addresses)
     end
   end
 end
