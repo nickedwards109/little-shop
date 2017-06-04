@@ -1,23 +1,46 @@
 - @title="Order Number #{@order.id}"
 = "Order id: #{@order.id}"
-%br
-%table.table-striped
-  %tr
-    %td Item
-    %td Quantity
-    %td Line Price
-  - @order.contained_items.each do |item, quantity|
-    %tr
-      %td
-        = item.title
-      %td
-        = quantity
-      %td
-        = item.price * quantity
-  %tr
-    %td
-    %td Total Price:
-    %td
-      = @order.total_price
-%h5 Order Status:
-= @order.status.capitalize
+.container-fluid
+  .row
+    .col-md-4
+      %h4 User
+      %p 
+        = "Full Name: #{@order.user.name}"
+      %p
+        = "User Name: #{@order.user.username}"
+      %h4 Order Date and Time
+      %p 
+        = @order.created_at
+    .col-md-4
+      %h4 Address
+      %p
+        = "Street Address: #{@order.user.addresses.first.street_address}"
+      %p
+        = "Secondary Address: #{@order.user.addresses.first.street_address2}"
+      %p
+        = "City: #{@order.user.addresses.first.city}"
+      %p
+        = "State: #{@order.user.addresses.first.state}"
+      %p
+        = "Zip Code: #{@order.user.addresses.first.zip_code}"
+    .col-md-4
+      %table.table-striped
+        %tr
+          %td Item
+          %td Quantity
+          %td Line Price
+        - @order.contained_items.each do |item, quantity|
+          %tr
+            %td
+              = item.title
+            %td
+              = quantity
+            %td
+              = item.price * quantity
+        %tr
+          %td
+          %td Total Price:
+          %td
+            = @order.total_price
+      %h5 Order Status:
+      = @order.status.capitalize
