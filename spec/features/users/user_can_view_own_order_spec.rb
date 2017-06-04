@@ -13,12 +13,14 @@ RSpec.feature 'User', type: :feature do
 
   scenario 'can view last five orders' do
     skip #user id increments by one from test to dashboard controller WTF!!!!
+
     create_list(:order, 10, user_id: user.id)
     newest_order = Order.last
     fifth_order_id = newest_order.id - 4
     fifth_newest_order = Order.find(fifth_order_id)
 
     expect(page).to have_current_path(dashboard_path)
+    binding.pry
     expect(page).to have_content(fifth_newest_order.id.to_s)
     expect(page).to have_content(fifth_newest_order.status)
     expect(page).to have_content(fifth_newest_order.created_at)

@@ -13,5 +13,5 @@ $<%= @item.price %><br>
 <% if @item.retired? %>
   <button type='button' disabled class: 'btn'>Item Retired</button>
 <% else %>
-  <button type="button" class="btn btn-success">Buy Now!</button>
+  <%= button_to "Add to Cart", carts_path(item_id: @item.id), method: :post, class: "btn btn-default"%>
 <% end %>

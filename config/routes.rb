@@ -25,8 +25,7 @@ Rails.application.routes.draw do
   resources :carts, only: [:create]
   get '/cart', to: 'carts#show'
   delete '/cart', to: 'carts#destroy'
-  patch '/cart_decrement', to: 'carts#decrement'
-  patch '/cart_increment', to: 'carts#increment'
+  put '/cart', to: 'carts#update'
   get '/checkout', to: 'users/orders#checkout'
 
 

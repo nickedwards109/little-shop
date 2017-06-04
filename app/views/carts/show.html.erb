@@ -14,8 +14,8 @@
                 <div>Quantity: <%= @cart.contents[item_id] %></div>
                 <div>Subtotal: $<%= @cart.dollar_subtotal(item) %></div>
                 <%= button_to  "#{item.title}", item_path(item), class: "btn btn-success", method: :get %>
-                <%= button_to "Reduce quantity", cart_decrement_path(item_id: item.id), class: "btn btn-default", method: :patch %>
-                <%= button_to "Increase quantity", cart_increment_path(item_id: item.id), class: "btn btn-default", method: :patch %>
+                <%= button_to "Reduce quantity", cart_path(item_id: item.id, quantity_change: -1), method: "put", class: "btn btn-default"%>
+                <%= button_to "Increase quantity", cart_path(item_id: item.id, quantity_change: 1), class: "btn btn-default", method: :put %>
                 <%= button_to  "Remove", cart_path(item_id: item.id), class: "btn btn-default", method: :delete %>
               </div>
             </div>

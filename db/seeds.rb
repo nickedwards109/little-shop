@@ -7,12 +7,15 @@ require 'faker'
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create(name: 'admin', username: 'admin', password: 'admin')
+User.create(name: 'admin', username: 'admin', password: 'admin', role: 1)
 user = User.create(name: 'Harry Potter', username: 'hpotter', password: 'password')
+puts "Seeded Users"
 
 10.times do
   Category.create(title: Faker::Commerce.department)
 end
+
+puts "Seeded categories"
 
 Category.all.each do |category|
   40.times do
@@ -25,6 +28,8 @@ Category.all.each do |category|
   end
 end
 
+puts "Seeded Items"
+
 3.times do
   user.addresses.create(
     street_address: Faker::Address.street_address,
@@ -33,6 +38,7 @@ end
     zip_code: Faker::Address.zip
     )
 end
+puts "Seeded Addresses"
 
 5.times do
   order = user.orders.create
@@ -42,3 +48,5 @@ end
     order.items.append(item)
   end
 end
+
+puts "Seeded Orders"
