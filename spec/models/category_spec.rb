@@ -7,12 +7,10 @@ RSpec.describe Category, type: :model do
   end
 
   describe "relationships" do
-    before(:each) do
-      @category = create(:category)
-    end
+    let(:category) {create(:category)}
 
     it "has many items" do
-      expect(@category).to respond_to(:items)
+      expect(category).to respond_to(:items)
     end
   end
 end
