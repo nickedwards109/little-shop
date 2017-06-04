@@ -4,7 +4,7 @@
     %td Order Status
     %td Order Date
     %td User
-  - Order.all.reverse.each do |order|
+  - @orders.reverse.each do |order|
     %tr
       %td
         = link_to "order number: #{order.id}", admin_order_path(order)

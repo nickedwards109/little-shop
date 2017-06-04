@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Admin", type: :feature do
   let(:admin) {create(:user, role: 'admin')}
+  let(:order) {create(:order)}
 
   before(:each) do
     visit(login_path)
@@ -11,6 +12,12 @@ RSpec.feature "Admin", type: :feature do
   end
 
   scenario "can view all orders" do
-    expect(page).to have_current_path('/admin/dashboard')
+    skip
+    # click_on("order number: #{order.id}")
+    find(:xpath, "//a[@href='/admin/orders/#{order.id}']").click
+    expect(page).to have_content(order.user.name)
+    expect(page).to have_content(order.created_at)
+    expect(page).to have_content(order.user.address.street_address)
+    expect(page).to have_content(order.status)
   end
 end
