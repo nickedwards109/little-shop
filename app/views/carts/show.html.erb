@@ -22,13 +22,11 @@
     <% end %>
   </div>
   <div class="offset-md-2 cart-summary-container">
-    <div>
-      Total: $<%= @cart.total_dollar_amount %>
-    <br>
-    <%= button_to "Place Order!", orders_path, class: "btn btn-success" %>
-
-    </div>
-
-
+    <div>Total: $<%= @cart.total_dollar_amount %></div>
+    <% if !user_is_authenticated? %>
+      <%= link_to "Login or Register to Checkout", login_path %>
+    <% else %>
+      <%= button_to "Place Order!", orders_path, class: "btn btn-success" %>
+    <% end %>
   </div>
 </div>

@@ -1,10 +1,15 @@
 class SessionsController < ApplicationController
+
   def new
-    @user = User.new
+    if current_user
+      redirect_to root_path
+    else
+      @user = User.new
+    end
   end
 
   def create
-    @user = User.find_by(username: params[:user][:username])
+    @user = User.find_by(username: params[:user][:username].downcase)
 
     if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
@@ -14,14 +19,12 @@ class SessionsController < ApplicationController
         redirect_to dashboard_path
       end
     else
-      flash[:error] = 'Login Failed'
-      redirect_to login_path
+      redirect_to login_path, notice: 'Login Failed'
     end
   end
 
   def destroy
     session.clear
-    flash[:login] = 'Successfully Logged Out'
-    redirect_to root_path
+    redirect_to root_path, notice: 'Successfully Logged Out'
   end
 end

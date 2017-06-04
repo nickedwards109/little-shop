@@ -8,20 +8,18 @@ RSpec.describe Order, type: :model do
   end
 
   describe "relationships" do
-    before(:each) do
-      @order = create(:order)
-    end
+    let(:order) {create(:order)}
 
     it "belongs to user" do
-      expect(@order).to respond_to(:user)
+      expect(order).to respond_to(:user)
     end
 
     it "has many order items" do
-      expect(@order).to respond_to(:order_items)
+      expect(order).to respond_to(:order_items)
     end
 
     it "has many items" do
-      expect(@order).to respond_to(:items)
+      expect(order).to respond_to(:items)
     end
 
   end
