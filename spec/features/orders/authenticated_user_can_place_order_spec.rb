@@ -20,7 +20,7 @@ RSpec.feature 'Placing an order' do
     click_on 'Cart (1)'
     expect(page).to have_current_path(cart_path)
     
-    click_button 'Place Order!'
+    click_button 'Checkout'
     expect(page).to have_current_path(order_path(Order.last))
     expect(page).to have_content(item1.title)
     expect(page).to have_content("x1")
@@ -44,7 +44,7 @@ RSpec.feature 'Placing an order' do
     click_on 'Cart (2)'
     expect(page).to have_current_path(cart_path)
     
-    click_button 'Place Order!'
+    click_button 'Checkout'
     expect(page).to have_current_path(order_path(Order.last))
     expect(page).to have_content(item1.title)
     expect(page).to have_content('x1')
@@ -68,7 +68,7 @@ RSpec.feature 'Placing an order' do
     click_on 'Cart (3)'
     expect(page).to have_current_path(cart_path)
     
-    click_button 'Place Order!'
+    click_button 'Checkout'
     expect(page).to have_current_path(order_path(Order.last))
     expect(page).to have_content(item1.title)
     expect(page).to have_content("x3")
