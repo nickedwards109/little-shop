@@ -18,5 +18,5 @@
     .col-md-4
       = form_tag(admin_dashboard_path, method: 'get') do |f|
         %p Order Status Filter
-        = select_tag("Order Status", options_from_collection_for_select(Order.all, "status", "status"))
+        = select_tag("Order Status", options_from_collection_for_select(Order.select(:status).distinct, "status", "status"))
         = submit_tag("Filter Orders")

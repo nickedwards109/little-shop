@@ -3,6 +3,7 @@
     %td Order ID
     %td Order Status
     %td Order Date
+    %td Change Order Status
   - @user.orders.reverse.each do |order|
     %tr 
       %td
@@ -11,3 +12,5 @@
         = order.status
       %td
         = order.created_at
+      %td
+        = display_change_button(order.status)

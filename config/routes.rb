@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
     resources :items, only: [:index, :edit, :update, :new, :create]
     resources :orders, only: [:show]
+
+    get '/change', to: 'dashboard#change'
   end
 
   scope module: 'users' do
