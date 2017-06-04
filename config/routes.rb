@@ -19,15 +19,17 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :edit, :update] do
     resources :addresses
   end
-  
+
   resources :items, only: [:index, :show]
 
   resources :carts, only: [:create]
+
+  resources :charges
+  
   get '/cart', to: 'carts#show'
   delete '/cart', to: 'carts#destroy'
   patch '/cart_decrement', to: 'carts#decrement'
   patch '/cart_increment', to: 'carts#increment'
-
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
