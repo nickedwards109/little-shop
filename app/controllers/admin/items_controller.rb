@@ -35,7 +35,7 @@ class Admin::ItemsController < AuthenticateAdminController
   private
 
   def item_params
-    params.require(:item).permit(:title, :description, :price, :category_id)
+    params.require(:item).permit(:title, :description, :price, :category_id, :inventory_status)
   end
 
   def set_item

@@ -10,4 +10,8 @@
 </div>
 </br>
 $<%= @item.price %><br>
-<button type="button" class="btn btn-success">Buy Now!</button>
+<% if @item.retired? %>
+  <button type='button' disabled class: 'btn'>Item Retired</button>
+<% else %>
+  <button type="button" class="btn btn-success">Buy Now!</button>
+<% end %>
