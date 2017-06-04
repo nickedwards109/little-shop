@@ -15,7 +15,7 @@ class Admin::ItemsController < AuthenticateAdminController
     if @item.save
       redirect_to admin_items_path, notice: 'Item Created'
     else
-      flash[:item] = 'Unable to Create Item'
+      flash[:notice] = 'Unable to Create Item'
       render :new
     end
   end
@@ -35,7 +35,8 @@ class Admin::ItemsController < AuthenticateAdminController
   private
 
   def item_params
-    params.require(:item).permit(:title, :description, :price, :category_id, :image)
+    params.require(:item)
+          .permit(:title, :description, :price, :category_id, :image, :inventory_status)
   end
 
   def set_item
