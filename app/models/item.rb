@@ -10,4 +10,8 @@ class Item < ApplicationRecord
   validates :title, uniqueness: true
 
   enum inventory_status: ["in-stock", "out-of-stock", "retired"]
+
+  def self.retired?
+    self.inventory_status == 'retired' ? true : false
+  end
 end
