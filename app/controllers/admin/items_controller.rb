@@ -11,7 +11,7 @@ class Admin::ItemsController < AuthenticateAdminController
 
   def create
     @item = Item.new(item_params)
-    
+
     if @item.save
       redirect_to admin_items_path, notice: 'Item Created'
     else
@@ -35,7 +35,7 @@ class Admin::ItemsController < AuthenticateAdminController
   private
 
   def item_params
-    params.require(:item).permit(:title, :description, :price, :category_id)
+    params.require(:item).permit(:title, :description, :price, :category_id, :image)
   end
 
   def set_item

@@ -17,7 +17,7 @@ RSpec.feature 'Admin', type: :feature do
   scenario 'can view items' do
     expect(page).to have_current_path('/admin/dashboard')
     click_on('View All Items')
-    
+
     expect(page).to have_current_path(admin_items_path)
     expect(page).to have_content(@item1.title)
     expect(page).to have_content(@item2.title)
@@ -56,6 +56,7 @@ RSpec.feature 'Admin', type: :feature do
     fill_in 'item[price]', with: 21.99
     select category.title, :from => 'item[category_id]'
     select 'out-of-stock', :from => 'item[inventory_status]'
+    attach_file("item[image]", "./public/assets/sample.jpg")
     click_on('Create Item')
 
     item = Item.find_by(title: 'toy water')
