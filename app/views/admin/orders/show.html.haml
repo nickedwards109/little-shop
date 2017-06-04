@@ -1,0 +1,23 @@
+- @title="Order Number #{@order.id}"
+= "Order id: #{@order.id}"
+%br
+%table.table-striped
+  %tr
+    %td Item
+    %td Quantity
+    %td Line Price
+  - @order.contained_items.each do |item, quantity|
+    %tr
+      %td
+        = item.title
+      %td
+        = quantity
+      %td
+        = item.price * quantity
+  %tr
+    %td
+    %td Total Price:
+    %td
+      = @order.total_price
+%h5 Order Status:
+= @order.status.capitalize

@@ -13,6 +13,4 @@
       = button_to 'Add a New Item', new_admin_item_path, method: 'get'
   .row
     .col-md-12
-      = render partial: 'users/orders'
-      %br
-      = link_to "View All Past Orders", orders_path
+      = render partial: 'admin/orders/index'

@@ -7,7 +7,7 @@ require 'faker'
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create(name: 'admin', username: 'admin', password: 'admin')
+User.create(name: 'admin', username: 'admin', password: 'admin', role: 'admin')
 user = User.create(name: 'Harry Potter', username: 'hpotter', password: 'password')
 
 10.times do

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     get '/dashboard', to: 'dashboard#home'
 
     resources :items, only: [:index, :edit, :update, :new, :create]
+    resources :orders, only: [:show]
   end
 
   scope module: 'users' do
