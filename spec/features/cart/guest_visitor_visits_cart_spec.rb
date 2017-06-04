@@ -22,7 +22,7 @@ RSpec.describe "Cart" do
     click_on "Submit Login"
     visit cart_path
     expect(page).not_to have_content("Login or Register to Checkout")
-    expect(page).to have_content("Checkout")
+    expect(page).to have_button("Checkout")
     expect(page).to have_content(item.title)
   end
 end

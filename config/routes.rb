@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   scope module: 'users' do
     get '/dashboard', to: 'dashboard#home'
-    resources :orders, only: [:index]
+    resources :orders, only: [:index, :show, :create]
   end
 
   resources :categories, only: [:index, :show] do
@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   delete '/cart', to: 'carts#destroy'
   patch '/cart_decrement', to: 'carts#decrement'
   patch '/cart_increment', to: 'carts#increment'
+  get '/checkout', to: 'users/orders#checkout'
 
 
   get '/login', to: 'sessions#new'

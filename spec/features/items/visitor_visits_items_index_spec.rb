@@ -26,7 +26,6 @@ RSpec.feature 'Items Index' do
     expect(page).to have_content(item1.title)
     expect(page).to have_content(item1.description)
     expect(page).to have_content(item1.price)
-    expect(page).to have_content("Buy Now!")
   end
 
   scenario 'visitor clicks on an item and then clicks on category and sees category page' do
