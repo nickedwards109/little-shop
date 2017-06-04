@@ -16,17 +16,20 @@ Rails.application.routes.draw do
     resources :items, only: [:show], module: "categories"
   end
 
+  resources :users, only: [:new, :create, :edit, :update] do
+    resources :addresses
+  end
+  
   resources :items, only: [:index, :show]
+
   resources :carts, only: [:create]
   get '/cart', to: 'carts#show'
   delete '/cart', to: 'carts#destroy'
   patch '/cart_decrement', to: 'carts#decrement'
   patch '/cart_increment', to: 'carts#increment'
 
-  resources :users, only: [:new, :create, :edit, :update]
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/login', to: 'sessions#destroy'
-
 end
