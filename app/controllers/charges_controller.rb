@@ -12,20 +12,21 @@ class ChargesController < ApplicationController
 
     charge = Stripe::Charge.create(
       :customer    => customer.id,
-      :amount      => @amount_cents,
+      :amount      => @amount_cents.to_i,
       :description => 'Rails Stripe customer',
       :currency    => 'usd'
     )
 
-  unless Stripe::CardError
-    #make a new order in the database
-    #redirect to path for OrdersController#create
+    Order.create(user_id: session[:user_id])
+    Order.last.add_items(@cart.contents)
+    session[:cart] = {}
+    redirect_to order_path(Order.last)
+
+    rescue Stripe::CardError => e
+      flash[:error] = e.message
+      redirect_to new_charge_path
   end
 
-  rescue Stripe::CardError => e
-    flash[:error] = e.message
-    redirect_to new_charge_path
-  end
 
   private
 
