@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  has_attached_file :image, styles: { thumbnail: "100x100" }
+  has_attached_file :image, styles: { thumbnail: "150x150" }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
   belongs_to :category
   has_many :order_items
