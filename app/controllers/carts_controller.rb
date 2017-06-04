@@ -7,7 +7,7 @@ class CartsController < ApplicationController
     session[:cart] ||= {}
     session[:cart][id] = (session[:cart][id] || 0) + 1
     flash[:notice] = "Your cart now contains #{pluralize(session[:cart][id], item.title)}."
-    redirect_to items_path
+    redirect_to request.referrer 
   end
 
   def show
@@ -19,7 +19,7 @@ class CartsController < ApplicationController
     @cart.contents.delete(id)
     item_link = "#{view_context.link_to(item.title, item_path(item))}"
     flash[:success] = "Successfully removed #{item_link} from your cart."
-    redirect_to cart_path
+    redirect_to request.referrer
   end
 
   def decrement

@@ -54,8 +54,6 @@ GEM
       execjs
     bcrypt (3.1.11)
     bindex (0.5.0)
-    bootstrap-sass (3.1.1.1)
-      sass (~> 3.2)
     bootstrap_form (2.7.0)
     breadcrumbs_on_rails (3.0.1)
     builder (3.2.3)
@@ -107,7 +105,7 @@ GEM
       haml (>= 4.0, < 6)
       nokogiri (>= 1.6.0)
       ruby_parser (~> 3.5)
-    i18n (0.8.1)
+    i18n (0.8.4)
     jbuilder (2.6.4)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2)
@@ -150,7 +148,7 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
     public_suffix (2.0.5)
-    puma (3.8.2)
+    puma (3.9.0)
     rack (2.0.3)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -258,8 +256,7 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   bcrypt (~> 3.1.7)
-  bootstrap!
-  bootstrap-sass (~> 3.1.0)
+  bootstrap (~> 4.0.0.alpha6)!
   bootstrap_form
   breadcrumbs_on_rails
   byebug
