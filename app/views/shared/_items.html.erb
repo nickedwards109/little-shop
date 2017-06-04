@@ -1,8 +1,8 @@
 <% @items.in_groups_of(4, false) do |group| %>
   <div class="card-deck">
     <% group.each do |item| %>
-      <div class="card"> 
-        <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card">
+        <%= image_tag item.image.url(:thumbnail), height: "150", width: "150" %>
         <div class="card-block">
           <h4 class="card-title"><%= item.title %></h3>
           <p class="card-text"><%= item.description %></p>

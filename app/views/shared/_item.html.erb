@@ -1,7 +1,7 @@
 <strong><%= link_to @item.category.title, category_path(@item.category) %>/<%= @item.title %></strong><br>
 <div class="row">
   <div class="col-md-2 item-picture">
-    item picture will go here
+    <%= image_tag @item.image.url(:thumbnail), height: "150", width: "150" %>
   </div>
   <br>
   <div class="col-md-6 item-description">
