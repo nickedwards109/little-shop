@@ -5,6 +5,11 @@ Rails.application.routes.draw do
     get '/dashboard', to: 'dashboard#home'
 
     resources :items, only: [:index, :edit, :update, :new, :create]
+    resources :orders, only: [:show]
+
+    get '/markpaid', to: 'dashboard#paid'
+    get '/markcompleted', to: 'dashboard#completed'
+    get '/markcancel', to: 'dashboard#cancel'
   end
 
   scope module: 'users' do
