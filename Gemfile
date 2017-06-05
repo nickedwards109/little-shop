@@ -16,14 +16,15 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'haml'
 gem 'html2haml'
 gem 'will_paginate'
-gem 'bootstrap', '~> 4.0.0.alpha6', git: 'https://github.com/twbs/bootstrap-rubygem'
+gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'autoprefixer-rails'
 gem 'jquery-rails'
 gem "breadcrumbs_on_rails"
 gem 'bootstrap_form'
 gem 'figaro'
 gem 'faker'
-gem "paperclip"
+gem 'paperclip'
+gem 'stripe'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

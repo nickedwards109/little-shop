@@ -10,18 +10,10 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require_tree .
+ *= require_self
  */
-
 
 // Import Bootstrap
 @import "bootstrap";
-// or Import Bootstrap Flex
-// @import "bootstrap-flex";
-// or Import Bootstrap Grid
-// @import "bootstrap-grid";
-// or Import Bootstrap Reboot
-@import "bootstrap-reboot";
-
-.btn {
-  margin: 2px;
-}
+@import 'buttons';

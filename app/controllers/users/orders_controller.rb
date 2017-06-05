@@ -1,5 +1,5 @@
 class Users::OrdersController < AuthenticateUserController
-  
+
   def index
     @user = User.find(session[:user_id])
     @orders = @user.orders
@@ -10,12 +10,7 @@ class Users::OrdersController < AuthenticateUserController
     @order = Order.find(params[:id])
   end
 
-  def create
-    Order.create(user_id: session[:user_id])
-    Order.last.add_items(@cart.contents)
-    session[:cart] = {}
-    redirect_to order_path(Order.last)
-  end
+  # Creating a new order is handled by the Stripe ChargesController
 
   def checkout
     @user = User.find(session[:user_id])

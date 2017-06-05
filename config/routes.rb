@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   scope module: 'users' do
     get '/dashboard', to: 'dashboard#home'
-    resources :orders, only: [:index, :show, :create]
+    resources :orders, only: [:index, :show]
   end
 
   resources :categories, only: [:index, :show] do
@@ -24,16 +24,17 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :edit, :update] do
     resources :addresses
   end
-  
+
   resources :items, only: [:index, :show]
 
   resources :carts, only: [:create]
+
+  resources :charges
+
   get '/cart', to: 'carts#show'
   delete '/cart', to: 'carts#destroy'
-  patch '/cart_decrement', to: 'carts#decrement'
-  patch '/cart_increment', to: 'carts#increment'
+  put '/cart', to: 'carts#update'
   get '/checkout', to: 'users/orders#checkout'
-
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
