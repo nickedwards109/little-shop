@@ -1,0 +1,13 @@
+.col-md-6
+  = bootstrap_form_for [@user, @address] do |f|
+    %p 
+      = f.text_field :street_address 
+    %p 
+      = f.text_field :street_address2
+    %p 
+      = f.text_field :city 
+    %p 
+      = f.text_field :state 
+    %p 
+      = f.text_field :zip_code
+    = f.primary

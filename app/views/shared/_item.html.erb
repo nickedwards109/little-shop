@@ -1,7 +1,7 @@
 <strong><%= link_to @item.category.title, category_path(@item.category) %>/<%= @item.title %></strong><br>
 <div class="row">
   <div class="col-md-2 item-picture">
-    item picture will go here
+    <%= image_tag @item.image.url(:thumbnail), height: "150", width: "150" %>
   </div>
   <br>
   <div class="col-md-6 item-description">
@@ -10,4 +10,8 @@
 </div>
 </br>
 $<%= @item.price %><br>
-<button type="button" class="btn btn-success">Buy Now!</button>
+<% if @item.retired? %>
+  <button type='button' disabled class: 'btn'>Item Retired</button>
+<% else %>
+  <%= button_to "Add to Cart", carts_path(item_id: @item.id), method: :post, class: "btn btn-default"%>
+<% end %>

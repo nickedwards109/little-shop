@@ -1,37 +1,40 @@
 class UsersController < ApplicationController
+
   def new
-    @user = User.new
+    if current_user
+      redirect_to root_path
+    else
+      @user = User.new
+    end
   end
 
   def create
     @user = User.new(user_params)
-    @user.update_attributes(username: params[:user][:username].downcase)
-    
+
     if @user.save
-      flash[:user] = "Account Creation Successful!"
-      redirect_to login_path
+      redirect_to login_path, notice: 'Account Creation Successful!'
     else
-      flash[:error] = "Unable to Create Account"
+      flash[:notice] = 'Unable to Create Account'
       render :new
     end
   end
 
   def edit
-    if session[:user_id]
+    if session[:user_id] && current_user == User.find(params[:id])
       @user = User.find(session[:user_id])
     else
       redirect_to root_path
     end
   end
-  
+
   def update
     @user = User.find(session[:user_id])
     @user.update_attributes(user_params)
-    
+
     if @user.save
-      flash[:user] = "Account Successfully Updated"
-      redirect_to dashboard_path
+      redirect_to dashboard_path, notice: 'Account Successfully Updated'
     else
+      flash[:notice] = 'Account Unable to Update'
       render :edit
     end
   end

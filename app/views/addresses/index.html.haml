@@ -1,0 +1,21 @@
+%h3 Addresses
+%br
+%p 
+  = link_to "Create a New Address", new_user_address_path
+%br
+- @user.addresses.each do |address|
+  %p
+    = "Street Address: #{address.street_address}"
+  %p
+    = "Street Address 2: #{address.street_address2}"
+  %p
+    = "City: #{address.city}"
+  %p
+    = "State: #{address.state}"
+  %p
+    = "Zip Code: #{address.zip_code}"
+  %p.edit_delete 
+    = link_to 'Edit Address', edit_user_address_path(@user, address)
+    = link_to 'Delete Address', user_address_path(@user, address), method: 'delete'
+  %br
+  %br

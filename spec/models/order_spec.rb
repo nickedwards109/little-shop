@@ -8,20 +8,45 @@ RSpec.describe Order, type: :model do
   end
 
   describe "relationships" do
-    before(:each) do
-      @order = create(:order)
-    end
+    let(:order) {create(:order)}
 
     it "belongs to user" do
-      expect(@order).to respond_to(:user)
+      expect(order).to respond_to(:user)
     end
 
     it "has many order items" do
-      expect(@order).to respond_to(:order_items)
+      expect(order).to respond_to(:order_items)
     end
 
     it "has many items" do
-      expect(@order).to respond_to(:items)
+      expect(order).to respond_to(:items)
+    end
+
+  end
+
+  describe 'methods' do
+    it '#contained_items' do
+      order = create(:order)
+      item1 = create(:item)
+      item2 = create(:item)
+
+      OrderItem.create(order: order, item: item1)
+      OrderItem.create(order: order, item: item2)
+
+      expect(order.contained_items).to eq(item1 => 1, item2 => 1)
+    end
+
+    it '#total_price' do
+      order = create(:order)
+      item1 = create(:item)
+      item2 = create(:item)
+
+      OrderItem.create(order: order, item: item1)
+      OrderItem.create(order: order, item: item2)
+
+      items_total = (item1.price + item2.price)
+
+      expect(order.total_price).to eq(items_total)
     end
   end
 end

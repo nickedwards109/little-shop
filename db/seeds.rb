@@ -7,12 +7,46 @@ require 'faker'
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+User.create(name: 'admin', username: 'admin', password: 'admin', role: 1)
+user = User.create(name: 'Harry Potter', username: 'hpotter', password: 'password')
+puts "Seeded Users"
 
 10.times do
   Category.create(title: Faker::Commerce.department)
 end
 
+puts "Seeded categories"
 
-100.times do
-  Item.create(title: Faker::Commerce.product_name, description: Faker::Hipster.paragraph, price: Faker::Commerce.price, category: Category.find(rand(1..10)))
+Category.all.each do |category|
+  40.times do
+    category.items.create(
+      title: Faker::Commerce.product_name, description: Faker::Hipster.paragraph,
+      price: Faker::Commerce.price, image_file_name: 'image.png',
+      image_content_type: 'image/png', image_file_size: 20000,
+      image_updated_at: DateTime.now
+    )
+  end
 end
+
+puts "Seeded Items"
+
+3.times do
+  user.addresses.create(
+    street_address: Faker::Address.street_address,
+    street_address2: Faker::Address.secondary_address,
+    city: Faker::Address.city, state: Faker::Address.state,
+    zip_code: Faker::Address.zip
+    )
+end
+puts "Seeded Addresses"
+
+5.times do
+  order = user.orders.create
+
+  10.times do
+    item = Item.find(rand(1..Item.count))
+    order.items.append(item)
+  end
+end
+
+puts "Seeded Orders"

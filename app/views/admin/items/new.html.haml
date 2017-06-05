@@ -1,0 +1,21 @@
+.col-md-6
+  = bootstrap_form_for @item, :url => admin_items_path do |f|
+    %p
+      = f.text_field :title
+    %br
+    %p
+      = f.text_area :description
+    %br
+    %p
+      = f.number_field :price
+    %br
+    %p
+      = f.collection_select :category_id, Category.all, :id, :title
+    %br
+    %p
+      = f.select(:inventory_status, Item.inventory_statuses.keys)
+    %br
+    %p
+      = f.file_field :image
+    %br
+    = f.primary
