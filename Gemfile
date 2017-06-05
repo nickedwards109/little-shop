@@ -23,7 +23,8 @@ gem "breadcrumbs_on_rails"
 gem 'bootstrap_form'
 gem 'figaro'
 gem 'faker'
-gem "paperclip"
+gem 'paperclip'
+gem 'stripe'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

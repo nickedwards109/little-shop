@@ -26,7 +26,7 @@
     <% if !user_is_authenticated? %>
       <%= link_to "Login or Register to Checkout", login_path %>
     <% else %>
-      <%= button_to "Checkout", orders_path, class: "btn btn-success" %>
+      <%= button_to "Checkout", new_charge_path, method: :get, class: "btn btn-success" %>
     <% end %>
   </div>
 </div>
