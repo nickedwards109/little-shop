@@ -27,7 +27,7 @@ end
     )
 end
 
-10.times do
+20.times do
   order = user.orders.create(status: rand(0..3))
 
   10.times do

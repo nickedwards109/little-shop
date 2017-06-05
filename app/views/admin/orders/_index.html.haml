@@ -4,6 +4,8 @@
     %td Order Status
     %td Order Date
     %td User
+    %td Change Order Status
+    %td
   - @orders.reverse.each do |order|
     %tr
       %td
@@ -14,3 +16,11 @@
         = order.created_at
       %td
         = order.user.username
+      %td
+        - if order.status == 'ordered'
+          = button_to 'Mark as Paid', admin_markpaid_path(order), method: 'get', class: 'btn-xs btn-primary'
+        - else
+          = button_to 'Mark as Completed', admin_markcompleted_path(order), method: 'get', class: 'btn-xs btn-primary'
+      - if order.status == 'paid' || order.status == 'ordered'
+        %td
+          = button_to 'Cancel', admin_markcancel_path(order), method: 'get', class: 'btn-xs btn-danger'

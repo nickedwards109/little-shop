@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :edit, :update, :new, :create]
     resources :orders, only: [:show]
 
-    get '/change', to: 'dashboard#change'
+    get '/markpaid', to: 'dashboard#paid'
+    get '/markcompleted', to: 'dashboard#completed'
+    get '/markcancel', to: 'dashboard#cancel'
   end
 
   scope module: 'users' do
