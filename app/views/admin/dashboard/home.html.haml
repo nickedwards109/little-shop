@@ -20,3 +20,8 @@
         %p Order Status Filter
         = select_tag("Order Status", options_from_collection_for_select(Order.select(:status).distinct, "status", "status"))
         = submit_tag("Filter Orders")
+  .row
+    .col-md-12
+      = render partial: 'users/orders'
+      %br
+      = link_to "View All Past Orders", orders_path

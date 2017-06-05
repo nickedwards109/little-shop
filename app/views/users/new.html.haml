@@ -1,13 +1,14 @@
 %h3 Create Account
 %br
-= bootstrap_form_for(@user) do |f|
-  %p 
-    = f.text_field :name
-  %br
-  %p 
-    = f.text_field :username
-  %br
-  %p 
-    = f.password_field :password
-  %br
-    = f.primary "Create Account"
+.col-md-6
+  = bootstrap_form_for(@user) do |f|
+    %p 
+      = f.text_field :name
+    %br
+    %p 
+      = f.text_field :username
+    %br
+    %p 
+      = f.password_field :password
+    %br
+      = f.primary "Create Account"
