@@ -28,8 +28,7 @@ Rails.application.routes.draw do
 
   get '/cart', to: 'carts#show'
   delete '/cart', to: 'carts#destroy'
-  patch '/cart_decrement', to: 'carts#decrement'
-  patch '/cart_increment', to: 'carts#increment'
+  put '/cart', to: 'carts#update'
   get '/checkout', to: 'users/orders#checkout'
 
   get '/login', to: 'sessions#new'
