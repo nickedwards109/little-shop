@@ -35,9 +35,15 @@
         <a class="nav-link" href="/cart">Cart (<%= @cart.total_count %>) </a>
       </li>
     </ul>
-    <ul class="search-items">
+    <ul class="search search-items">
       <%= form_tag(items_path, method: 'get', id: 'search-form') do %>
         <%= text_field_tag(:search, params[:search], placeholder: 'Search Items') %>
+        <%= submit_tag('Search', name: nil) %>
+      <% end %>
+    </ul>
+    <ul class="search search-categories">
+      <%= form_tag(category_path(1), method: 'get', id: 'search-form') do %>
+        <%= text_field_tag(:search, params[:search], placeholder: 'Search Category') %>
         <%= submit_tag('Search', name: nil) %>
       <% end %>
     </ul>
