@@ -24,3 +24,5 @@
       - if order.status == 'paid' || order.status == 'ordered'
         %td
           = button_to 'Cancel', admin_markcancel_path(order), method: 'get', class: 'btn-xs btn-danger'
+%br
+= will_paginate(@orders, class: 'flickr_pagination')

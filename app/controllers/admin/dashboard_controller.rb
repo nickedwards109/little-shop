@@ -5,8 +5,9 @@ class Admin::DashboardController < AuthenticateAdminController
     @user = User.find(session[:user_id])
     if params["Order Status"]
       @orders = Order.where(status: params["Order Status"])
+                     .paginate(page: params[:page], per_page: 10)
     else
-      @orders = Order.all 
+      @orders = Order.paginate(page: params[:page], per_page: 10)
     end
   end
 
