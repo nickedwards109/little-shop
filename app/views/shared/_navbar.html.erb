@@ -35,17 +35,19 @@
         <a class="nav-link" href="/cart">Cart (<%= @cart.total_count %>) </a>
       </li>
     </ul>
-    <ul class="search search-items">
-      <%= form_tag(items_path, method: 'get', id: 'search-form') do %>
-        <%= text_field_tag(:search, params[:search], placeholder: 'Search Items') %>
-        <%= submit_tag('Search', name: nil) %>
-      <% end %>
-    </ul>
-    <ul class="search search-categories">
-      <%= form_tag(categories_path, method: 'get', id: 'search-form') do %>
-        <%= text_field_tag(:search, params[:search], placeholder: 'Search Category') %>
-        <%= submit_tag("Search", name: nil) %>
-      <% end %>
+    <ul class="navbar-nav mx-auto">
+      <ul class="search search-items">
+        <%= form_tag(items_path, method: 'get', id: 'search-form') do %>
+          <%= text_field_tag(:search, params[:search], placeholder: 'Search Items') %>
+          <%= submit_tag('Search', name: nil, class: "btn btn-primary") %>
+        <% end %>
+      </ul>
+      <ul class="search search-categories">
+        <%= form_tag(categories_path, method: 'get', id: 'search-form') do %>
+          <%= text_field_tag(:search, params[:search], placeholder: 'Search Category') %>
+          <%= submit_tag("Search", name: nil, class: "btn btn-primary") %>
+        <% end %>
+      </ul>
     </ul>
     <ul class="navbar-nav ml-auto">
         <% if session[:user_id] %>
@@ -62,6 +64,7 @@
             <%= link_to "Sign Up!", new_user_path, class: "nav-link" %>
           </li>
         <% end %>
+      </ul>
       </li>
     </ul>
   </div>

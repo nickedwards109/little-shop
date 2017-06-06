@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
   def index
     if params[:search]
-      @categories = Category.search(params[:search])
+      @categories = Category.search(params[:search].capitalize)
       redirect_to items_path, notice: 'Unable to find Category' if @categories.empty?
     end
   end
