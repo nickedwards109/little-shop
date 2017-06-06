@@ -36,7 +36,7 @@
             %td
               = quantity
             %td
-              = item.price * quantity
+              = number_to_currency(item.price * quantity)
         %tr
           %td
           %td Total Price:
