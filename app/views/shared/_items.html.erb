@@ -11,16 +11,16 @@
         <div class="card-footer item_<%= item.id %>">
           <%= link_to  "#{item.title}", category_item_path(item.category, item), class: "btn btn-success" %>
           <% if item.retired? %>
-            <button type='button' disabled class: 'btn'>Item Retired</button>
+            <button type="button" disabled class: "btn">Item Retired</button>
           <% else %>
             <%= button_to "Add to Cart", carts_path(item_id: item.id), method: :post, class: "btn btn-default"%>
           <% end %>
           <% if current_admin? %>
-            <%= link_to "Edit Item", edit_admin_item_path(item), id: "edit_item_#{item.id}"%>
+            <%= button_to "Edit Item", edit_admin_item_path(item), method: "get", class: "btn btn-warning"%>
           <% end %>
         </div>
       </div>
     <% end %>
   </div>
 <% end %>
-<%= will_paginate @items %>
+<%= will_paginate(@items, class: "flickr_pagination") %>
