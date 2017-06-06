@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
                    .order('created_at DESC')
                    .paginate(page: params[:page], per_page: 16)
     else
-      @items = Item.paginate(:page => params[:page], :per_page => 16)
+      @items = Item.paginate(page: params[:page], per_page: 16)
     end
   end
   
