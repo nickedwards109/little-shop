@@ -15,9 +15,10 @@ RSpec.feature 'Categories Index' do
     category2 = create(:category)
 
     visit categories_path
-    expect(page).to have_content(category1.title)
-    expect(page).to have_content(category2.title)
-    click_on(category1.title)
+    within(".main-view") do
+      click_on(category1.title)
+    end
+
     expect(page).to have_current_path(category_path(category1))
     expect(page).to have_content("#{category1.title} category")
   end
