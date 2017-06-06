@@ -8,7 +8,7 @@
   %p
     = "Street Address: #{address.street_address}"
   %p
-    - unless address.street_address2 = ""
+    - if address.street_address2 != ""
       = "Street Address 2: #{address.street_address2}"
   %p
     = "City: #{address.city}"
