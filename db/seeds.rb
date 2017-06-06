@@ -13,8 +13,11 @@ puts "Seeded categories"
 Category.all.each do |category|
   40.times do
     category.items.create(
-      title: Faker::Commerce.product_name, description: Faker::Hipster.paragraph,
-      price: Faker::Commerce.price, image: Faker::LoremPixel.image("300x300", false, 'cats'))
+      title: Faker::Commerce.product_name,
+      description: Faker::Hipster.paragraph,
+      price: Faker::Commerce.price,
+      image: Faker::LoremPixel.image("300x300", false, 'cats')
+      )
   end
 end
 
