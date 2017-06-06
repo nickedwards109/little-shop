@@ -36,15 +36,15 @@
       </li>
     </ul>
     <ul class="navbar-nav mx-auto">
-      <ul class="search search-items">
-        <%= form_tag(items_path, method: 'get', id: 'search-form') do %>
-          <%= text_field_tag(:search, params[:search], placeholder: 'Search Items') %>
-          <%= submit_tag('Search', name: nil, class: "btn btn-primary") %>
+      <ul class="search">
+        <%= form_tag(items_path, method: "get", id: "search-items") do %>
+          <%= text_field_tag(:search, params[:search], placeholder: "Search Items") %>
+          <%= submit_tag("Search", name: nil, class: "btn btn-primary") %>
         <% end %>
       </ul>
-      <ul class="search search-categories">
-        <%= form_tag(categories_path, method: 'get', id: 'search-form') do %>
-          <%= text_field_tag(:search, params[:search], placeholder: 'Search Category') %>
+      <ul class="search">
+        <%= form_tag(categories_path, method: "get", id: "search-categories") do %>
+          <%= text_field_tag(:search, params[:search], placeholder: "Search Category") %>
           <%= submit_tag("Search", name: nil, class: "btn btn-primary") %>
         <% end %>
       </ul>
