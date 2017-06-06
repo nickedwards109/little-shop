@@ -4,6 +4,6 @@ class Category < ApplicationRecord
   validates :title, presence: true, uniqueness: true
 
   def self.search(search)
-    where("title LIKE ?", "%#{search}%")
+    where("LOWER(title) LIKE ?", "%#{search}%")
   end
 end
