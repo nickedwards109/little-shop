@@ -1,13 +1,15 @@
-- @title="Login"
-Login Page
+.login-container
+  - @title="Login"
 
-.col-md-4
-  = bootstrap_form_for(@user, url: login_path) do |f|
-    %p 
-      = f.text_field :username
+  .col-md-4
+    %strong
+      Login Page
+    = bootstrap_form_for(@user, url: login_path) do |f|
+      %p
+        = f.text_field :username
+      %br
+      %p
+        = f.password_field :password
+      = f.primary 'Submit Login', method: "post"
     %br
-    %p 
-      = f.password_field :password
-    = f.primary 'Submit Login', method: "post"
-  %br
-  = link_to "Create Account", new_user_path
+    = link_to "Create Account", new_user_path
