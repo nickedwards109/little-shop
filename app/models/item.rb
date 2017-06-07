@@ -3,6 +3,7 @@ class Item < ApplicationRecord
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
   belongs_to :category
   has_many :order_items
+  has_many :reviews
   has_many :orders, through: :order_items
 
   validates :title, :description, :price,
