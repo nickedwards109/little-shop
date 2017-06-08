@@ -1,12 +1,5 @@
 require 'faker'
 
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 User.create(name: 'admin', username: 'admin', password: 'admin', role: 1)
 user = User.create(name: 'Harry Potter', username: 'hpotter', password: 'password')
 puts "Seeded Users"
@@ -20,11 +13,11 @@ puts "Seeded categories"
 Category.all.each do |category|
   40.times do
     category.items.create(
-      title: Faker::Commerce.product_name, description: Faker::Hipster.paragraph,
-      price: Faker::Commerce.price, image_file_name: 'image.png',
-      image_content_type: 'image/png', image_file_size: 20000,
-      image_updated_at: DateTime.now
-    )
+      title: Faker::Commerce.product_name,
+      description: Faker::Hipster.paragraph,
+      price: Faker::Commerce.price,
+      image: Faker::LoremPixel.image("300x300", false, 'cats')
+      )
   end
 end
 
@@ -40,8 +33,8 @@ puts "Seeded Items"
 end
 puts "Seeded Addresses"
 
-5.times do
-  order = user.orders.create
+20.times do
+  order = user.orders.create(status: rand(0..3))
 
   10.times do
     item = Item.find(rand(1..Item.count))

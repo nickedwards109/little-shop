@@ -1,6 +1,12 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.paginate(:page => params[:page], :per_page => 16)
+    if params[:search]
+      @items = Item.search(params[:search].downcase)
+                   .order('created_at DESC')
+                   .paginate(page: params[:page], per_page: 16)
+    else
+      @items = Item.paginate(page: params[:page], per_page: 16)
+    end
   end
   
   def show

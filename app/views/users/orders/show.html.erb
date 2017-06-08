@@ -10,7 +10,7 @@
     <tr>
       <td><%= item.title %> </td>
       <td>x<%= quantity  %></td>
-      <td>$<%= item.price*quantity %></td>
+      <td><%= number_to_currency(item.price*quantity) %></td>
     </tr>
   <% end %>
   <tr>

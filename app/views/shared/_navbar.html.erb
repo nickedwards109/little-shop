@@ -35,10 +35,24 @@
         <a class="nav-link" href="/cart">Cart (<%= @cart.total_count %>) </a>
       </li>
     </ul>
+    <ul class="navbar-nav mx-auto">
+      <ul class="search">
+        <%= form_tag(items_path, method: "get", id: "search-items") do %>
+          <%= text_field_tag(:search, params[:search], placeholder: "Search Items") %>
+          <%= submit_tag("Search", name: nil, class: "btn btn-primary") %>
+        <% end %>
+      </ul>
+      <ul class="search">
+        <%= form_tag(categories_path, method: "get", id: "search-categories") do %>
+          <%= text_field_tag(:search, params[:search], placeholder: "Search Category") %>
+          <%= submit_tag("Search", name: nil, class: "btn btn-primary") %>
+        <% end %>
+      </ul>
+    </ul>
     <ul class="navbar-nav ml-auto">
         <% if session[:user_id] %>
           <% user = User.find(session[:user_id]) %>
-          <span class="navbar-text"><%= "Logged in as #{user.username}"%></span>
+          <span class="navbar-text">Logged in as <%= link_to "#{user.username}", dashboard_path %></span>
           <li class="nav-item active">
             <%= link_to "Logout", login_path, method: "delete", class: "nav-link" %>
           </li>
@@ -50,6 +64,7 @@
             <%= link_to "Sign Up!", new_user_path, class: "nav-link" %>
           </li>
         <% end %>
+      </ul>
       </li>
     </ul>
   </div>
