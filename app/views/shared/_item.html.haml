@@ -1,17 +1,18 @@
 .item-container
   %strong
-    = link_to @item.category.title, category_path(@item.category) + "\/#{@item.title}"
+    = link_to @item.category.title, category_path(@item.category)
+    = "\/#{@item.title}"
   %br
-    .row
-      .col-md-2.item-picture
-        = image_tag @item.image.url(:thumbnail), height: "150", width: "150"
-      %br
-        .col-md-6.item-description
-          = @item.description
-    $#{@item.price}
+  .row
+    .col-md-2.item-picture
+      = image_tag @item.image.url(:thumbnail), height: "150", width: "150"
     %br
-      - if @item.retired?
-        %button.disabled.btn{:type => "button"}
-          Item Retired
-      - else
-        = button_to Add to Cart, carts_path(item_id: @item.id), method: :post, class: "btn btn-default"
+    .col-md-6.item-description
+      = @item.description
+  = "$#{@item.price}"
+  %br
+  - if @item.retired?
+    %button.disabled.btn{:type => "button"}
+      Item Retired
+  - else
+    = button_to "Add to Cart", carts_path(item_id: @item.id), method: :post, class: "btn btn-default"

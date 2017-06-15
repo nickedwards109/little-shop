@@ -4,16 +4,19 @@
       .card
         = image_tag item.image.url(:thumbnail), height: "150", width: "150"
         .card-block
-          %h4.card-title= item.title
-          %p.card-text= item.description
+          %h4.card-title
+            = item.title
           %p.card-text
-            $#{item.price}
-        = ".card-footer.item_#{item.id}"
-          = link_to "#{item.title}", category_item_path(item.category, item), class: "btn btn-success"
-        - if item.retired?
-          %button.disabled.btn{:type => "button"}
-          Item Retired
-      - else
-        = button_to Add to Cart, carts_path(item_id: item.id), method: :post, class: "btn btn-default"
-      - if current_admin?
-        = button_to Edit Item, edit_admin_item_path(item), method: get, class: "btn btn-warning"
+            = item.description
+          %p.card-text
+            = "$#{item.price}"
+        .card-footer{class: "item_#{item.id}"}
+          = link_to item.title, category_item_path(item.category, item), class: "btn btn-success"
+          - if item.retired?
+            %button.disabled.btn{:type => "button"}
+            Item Retired
+          - else
+            = button_to "Add to Cart", carts_path(item_id: item.id), method: :post, class: "btn btn-default"
+          - if current_admin?
+            = button_to "Edit Item", edit_admin_item_path(item), method: :get, class: "btn btn-warning"
+= will_paginate(@items, class: "flickr_pagination")
