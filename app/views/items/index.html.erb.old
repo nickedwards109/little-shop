@@ -1,2 +1,0 @@
-<% @title="All Items" %>
-<%= render 'shared/items' %>
