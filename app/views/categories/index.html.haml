@@ -1,0 +1,7 @@
+- @title="All Categories"
+%h1 All Categories
+%br
+- @categories.each do |category|
+  .col-md-1
+    = link_to "#{category.title}", category_path(category), class: "btn btn-success"
+  %br

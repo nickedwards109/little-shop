@@ -1,0 +1,48 @@
+%nav.navbar.navbar-toggleable-md.navbar-inverse.bg-inverse
+  %button.navbar-toggler.navbar-toggler-right{"aria-controls" => "navbarNavDropdown", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNavDropdown", "data-toggle" => "collapse", :type => "button"}
+    %span.navbar-toggler-icon
+  %a.navbar-brand{:href => "/"} (brand image can go here) Little Shop
+  #navbarNavDropdown.collapse.navbar-collapse
+    %ul.navbar-nav
+      - if current_page?(items_path) || current_page?(root_path)
+        %li.nav-item.active
+      - else
+        %li.nav-item
+      %a.nav-link{:href => "/"} Home
+      - if current_page?(categories_path)
+        %li.nav-item.dropdown.active
+      - else
+        %li.nav-item.dropdown
+      %a#navbarDropdownMenuLink.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "/categories"}
+        Categories
+      .dropdown-menu{"aria-labelledby" => "navbarDropdownMenuLink"}
+        - @categories.each do |category|
+          = link_to category.title, category_path(category),  class: "dropdown-item"
+      - if current_page?(cart_path)
+        %li.nav-item.active
+      - else
+        %li.nav-item
+      %a.nav-link{:href => "/cart"}
+        = "Cart (#{@cart.total_count})"
+    %ul.navbar-nav.mx-auto
+      %ul.search
+        = form_tag(items_path, method: "get", id: "search-items") do
+          = text_field_tag(:search, params[:search], placeholder: "Search Items")
+          = submit_tag("Search", name: nil, class: "btn btn-primary")
+      %ul.search
+        = form_tag(categories_path, method: "get", id: "search-categories") do
+          = text_field_tag(:search, params[:search], placeholder: "Search Category")
+          = submit_tag("Search", name: nil, class: "btn btn-primary")
+    %ul.navbar-nav.ml-auto
+      - if session[:user_id]
+        - user = User.find(session[:user_id])
+        %span.navbar-text
+          Logged in as
+          = link_to "#{user.username}", dashboard_path
+        %li.nav-item.active
+          = link_to "Logout", login_path, method: "delete", class: "nav-link"
+      - else
+        %li.nav-item.active
+          = link_to "Login", login_path, class: "nav-link"
+        %li.nav-item.active
+          = link_to "Sign Up!", new_user_path, class: "nav-link"

@@ -1,0 +1,22 @@
+- @title="Order Number #{@order.id}"
+= "Order id: #{@order.id}"
+%br
+%table.table-striped
+  %tr
+    %td Item
+    %td Quantity
+    %td Line price
+  - @order.contained_items.each do |item, quantity|
+    %tr
+      %td
+        = item.title
+      %td
+        = "x#{quantity}"
+      %td
+        = number_to_currency(item.price*quantity)
+  %tr
+    %td
+    %td Total Price:
+    %td
+      = "$#{@order.total_price}"
+= "Order Status: #{@order.status.capitalize}"
