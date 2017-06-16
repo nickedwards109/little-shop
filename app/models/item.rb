@@ -16,6 +16,7 @@ class Item < ApplicationRecord
   end
 
   def self.search(search)
-    where("LOWER(title) LIKE ? OR LOWER(description) LIKE ?", "%#{search}%", "%#{search}%")
+    query = search.downcase
+    where("LOWER(title) LIKE ? OR LOWER(description) LIKE ?", "%#{query}%", "%#{query}%")
   end
 end

@@ -10,8 +10,9 @@ class Order < ApplicationRecord
 
   def add_items(cart)
     cart.map do |item, quantity|
+      item = Item.find(item)
       quantity.times do
-        self.items.append(Item.find(item))
+        self.items.append(item)
       end
     end
   end

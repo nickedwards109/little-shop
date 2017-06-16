@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe Order, type: :model do
   describe "valid attributes" do
     it { should validate_presence_of(:status) }
-
     it { should define_enum_for(:status) }
   end
 
@@ -29,24 +28,27 @@ RSpec.describe Order, type: :model do
       order = create(:order)
       item1 = create(:item)
       item2 = create(:item)
-
-      OrderItem.create(order: order, item: item1)
-      OrderItem.create(order: order, item: item2)
+      order.items.append(item1, item2)
 
       expect(order.contained_items).to eq(item1 => 1, item2 => 1)
     end
 
     it '#total_price' do
       order = create(:order)
-      item1 = create(:item)
-      item2 = create(:item)
+      item1 = create(:item, price: 1.00)
+      item2 = create(:item, price: 2.00)
+      order.items.append(item1, item2)
 
-      OrderItem.create(order: order, item: item1)
-      OrderItem.create(order: order, item: item2)
+      expect(order.total_price).to eq(3.00)
+    end
 
-      items_total = (item1.price + item2.price)
+    it '#add_items' do
+      order = create(:order)
+      item = create(:item)
+      cart = {item.id.to_s => 2}
+      order.add_items(cart)
 
-      expect(order.total_price).to eq(items_total)
+      expect(order.items.first).to eq(item)
     end
   end
 end
