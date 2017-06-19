@@ -1,4 +1,4 @@
-class AddressesController < AuthenticateUserController
+class AddressesController < AuthorizedUserController
   before_action :set_address, only: [:edit, :update, :destroy]
   before_action :set_user, only: [:new, :index, :create, :index, :edit]
 

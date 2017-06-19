@@ -1,4 +1,4 @@
-class Users::OrdersController < AuthenticateUserController
+class Users::OrdersController < AuthorizedUserController
 
   def index
     @user = User.find(session[:user_id])

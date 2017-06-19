@@ -1,4 +1,4 @@
-class Admin::DashboardController < AuthenticateAdminController
+class Admin::DashboardController < AuthorizedAdminController
   before_action :set_order, only: [:paid, :completed, :cancel]
   
   def home
