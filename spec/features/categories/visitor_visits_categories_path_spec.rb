@@ -12,7 +12,7 @@ RSpec.feature 'Categories Index' do
 
   scenario 'visitor visits the categories page and clicks on a category and sees category show page' do
     category1 = create(:category)
-    category2 = create(:category)
+    create(:category)
 
     visit categories_path
     within(".main-view") do
