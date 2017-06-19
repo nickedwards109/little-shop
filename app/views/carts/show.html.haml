@@ -9,19 +9,22 @@
           %h4.card-title= item.title
           %p.card-text= item.description
           %p.card-text
-            = "Price: $#{item.price}"
+            Price:
+            = number_to_currency(item.price)
         .card-footer
-          %div
+          %p
             = "Quantity: #{@cart.contents[item_id]}"
-          %div
-            = "Subtotal: $#{@cart.dollar_subtotal(item)}"
+          %p
+            Subtotal:
+            = number_to_currency(@cart.dollar_subtotal(item))
           = button_to  "#{item.title}", item_path(item), class: "btn btn-success", method: :get
           = button_to "Reduce quantity", cart_path(item_id: item.id, quantity_change: -1), method: "put", class: "btn btn-default"
           = button_to "Increase quantity", cart_path(item_id: item.id, quantity_change: 1), class: "btn btn-default", method: :put
           = button_to  "Remove", cart_path(item_id: item.id), class: "btn btn-default", method: :delete
   .offset-md-2.cart-summary-container
-    %div
-      = "Total: $#{@cart.total_dollar_amount}"
+    %p
+      Total:
+      = number_to_currency(@cart.total_dollar_amount)
     - if current_user.nil?
       = link_to "Login or Register to Checkout", login_path
     - else
