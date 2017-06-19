@@ -22,7 +22,7 @@
   .offset-md-2.cart-summary-container
     %div
       Total: $#{@cart.total_dollar_amount}
-    - if !user_is_authenticated?
+    - if current_user.nil?
       = link_to "Login or Register to Checkout", login_path
     - else
       = button_to "Checkout", new_charge_path, method: :get, class: "btn btn-success"

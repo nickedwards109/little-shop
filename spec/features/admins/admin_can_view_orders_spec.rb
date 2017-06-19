@@ -4,10 +4,7 @@ RSpec.feature 'Admin', type: :feature do
   let(:admin) {create(:user, role: 'admin')}
 
   before(:each) do
-    visit(login_path)
-    fill_in 'user[username]', with: admin.username
-    fill_in 'user[password]', with: admin.password
-    click_on('Submit Login')
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
   end
 
   scenario 'can view all orders' do
@@ -51,7 +48,7 @@ RSpec.feature 'Admin', type: :feature do
 
   scenario 'can filter view of orders' do
     create_list(:order, 5)
-    order = create(:order, status: 'paid')
+    create(:order, status: 'paid')
 
     visit(admin_dashboard_path)
     select('paid', :from => 'Order Status')
