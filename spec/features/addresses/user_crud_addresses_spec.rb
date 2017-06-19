@@ -18,7 +18,6 @@ RSpec.feature 'Address', type: :feature do
                             state: 'CO',
                             zip_code: 80202
     )
-    expect(Address).to receive(:create!).and_return(address)
 
     visit(new_user_address_path(user))
     fill_in 'address[street_address]', with: address.street_address
@@ -30,11 +29,7 @@ RSpec.feature 'Address', type: :feature do
 
     expect(page).to have_current_path(user_addresses_path(user))
     expect(page).to have_content('Successfully Created Address')
-    # expect(page).to have_content('123 Fake St')
-    # expect(page).to have_content('Apartment 4')
-    # expect(page).to have_content('Denver')
-    # expect(page).to have_content('Colorado')
-    # expect(page).to have_content('80202')
+    expect(page).to have_content(address.street_address)
   end
 
   scenario 'can be edited' do

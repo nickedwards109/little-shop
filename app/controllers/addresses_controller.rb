@@ -7,9 +7,9 @@ class AddressesController < AuthorizedUserController
   end
 
   def create
-    address = @user.addresses.create(address_params)
-
-    if address
+    address = @user.addresses.new(address_params)
+    
+    if address.save
       redirect_to user_addresses_path, notice: 'Successfully Created Address'
     else
       flash[:notice] = 'Unable to Create Address'
