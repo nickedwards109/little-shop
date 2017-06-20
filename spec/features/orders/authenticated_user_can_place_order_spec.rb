@@ -8,19 +8,17 @@ RSpec.feature 'Placing an order' do
   # so that we can thoroughly test the checkout.
   # I have manually tested the checkout and it works as expected. -Nick 6/4/17
 
-  # I have simplified the tests. I stubbed the use of striped so that we can test
-  # for the creation of the order. I hope to add a separate test that will mock 
-  # Stripe access without making the network call. -Bao 6/19/17
+  # I have simplified the tests. I stubbed the creation of the order. I believe
+  # we can mock the stripe functionality in the future. -Bao 6/19/17
+
+  let(:user) {create(:user)}
 
   before :each do
-    user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
   end
 
   scenario 'authenticated user adds items to the cart and creates an order' do
-    # order = double("order")
-    # expect(Order).to receive(:create).and_return(order)
-
+    order = double("order")
     item1 = create(:item)
     item2 = create(:item, title: 'A Different Item')
 
@@ -39,7 +37,6 @@ RSpec.feature 'Placing an order' do
     expect(page).to have_current_path(cart_path)
 
     click_button 'Checkout'
-
-    # allow(ChargesController).to receive(:create_order).and_return(Order.last)
+    allow(Order).to receive(:create).and_return(order)
   end
 end

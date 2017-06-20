@@ -1,6 +1,5 @@
 class ChargesController < ApplicationController
   before_action :set_order_amount
-  helper_method :create_order
 
   def new
   end
@@ -13,7 +12,7 @@ class ChargesController < ApplicationController
 
     Stripe::Charge.create(
       :customer    => customer.id,
-      :amount      => @amount_cents.to_i,
+      :amount      => @amount_in_cents.to_i,
       :description => 'Rails Stripe customer',
       :currency    => 'usd'
     )
@@ -27,6 +26,8 @@ class ChargesController < ApplicationController
       redirect_to new_charge_path
   end
 
+  private
+
   def create_order
     Order.create(user_id: session[:user_id])
     Order.last.add_items(@cart.contents)
@@ -36,10 +37,8 @@ class ChargesController < ApplicationController
     session[:cart] = {}
   end
 
-  private
-
   def set_order_amount
-    @amount_dollars = @cart.total_dollar_amount
-    @amount_cents = @amount_dollars * 100
+    amount = @cart.total_dollar_amount
+    @amount_in_cents = amount * 100
   end
 end

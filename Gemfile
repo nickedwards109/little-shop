@@ -36,6 +36,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'selenium-webdriver'
   gem 'capybara', '~> 2.13.0'
+  # gem 'stripe-ruby-mock', '~> 2.4.1', :require => 'stripe_mock'
 end
 
 group :development do
