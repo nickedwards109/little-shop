@@ -8,14 +8,11 @@ RSpec.feature 'Admin', type: :feature do
     @item1 = Item.first
     @item2 = Item.last
 
-    visit(login_path)
-    fill_in 'user[username]', with: admin.username
-    fill_in 'user[password]', with: admin.password
-    click_on('Submit Login')
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
   end
 
   scenario 'can view items' do
-    expect(page).to have_current_path('/admin/dashboard')
+    visit('/admin/dashboard')
     click_on('View All Items')
 
     expect(page).to have_current_path(admin_items_path)

@@ -28,4 +28,20 @@ RSpec.describe Item, type: :model do
       expect(item).to respond_to(:orders)
     end
   end
+
+  describe "methods" do
+    it "checks if inventory status is retired" do
+      item = create(:item, inventory_status: "retired")
+      result = item.retired?
+
+      expect(result).to eq(true)
+    end
+
+    it "allow item to be searched" do
+      item = create(:item, title: "Baloney Pants")
+      result = Item.search("LOne")
+
+      expect(result[0]).to eq(item)
+    end
+  end
 end

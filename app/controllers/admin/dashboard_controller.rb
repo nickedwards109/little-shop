@@ -1,8 +1,8 @@
-class Admin::DashboardController < AuthenticateAdminController
+class Admin::DashboardController < AuthorizedAdminController
   before_action :set_order, only: [:paid, :completed, :cancel]
   
   def home
-    @user = User.find(session[:user_id])
+    @user = current_user
     if params["Order Status"]
       @orders = Order.where(status: params["Order Status"])
                      .paginate(page: params[:page], per_page: 10)

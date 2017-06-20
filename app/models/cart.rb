@@ -16,12 +16,10 @@ class Cart
   end
 
   def total_dollar_amount
-    total = 0
-    contents.each do |item_id, quantity|
+    contents.sum do |item_id, quantity|
       item = Item.find(item_id)
-      total += item.price * quantity
+      item.price * quantity
     end
-    total
   end
 
   def change_quantity(item_id, quantity)

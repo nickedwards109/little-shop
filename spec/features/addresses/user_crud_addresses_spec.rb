@@ -7,28 +7,29 @@ RSpec.feature 'Address', type: :feature do
   }
 
   before(:each) do
-    visit(login_path)
-    fill_in 'user[username]', with: user.username
-    fill_in 'user[password]', with: user.password
-    click_on('Submit Login')
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
   end
 
   scenario 'can be created' do
+    address = build_stubbed(:address,
+                            street_address: '123 Blake St.',
+                            street_address2: 'Unit 99',
+                            city: 'Denver',
+                            state: 'CO',
+                            zip_code: 80202
+    )
+
     visit(new_user_address_path(user))
-    fill_in 'address[street_address]', with: '123 Fake St'
-    fill_in 'address[street_address2]', with: 'Apartment 4'
-    fill_in 'address[city]', with: 'Denver'
-    fill_in 'address[state]', with: 'Colorado'
-    fill_in 'address[zip_code]', with: 80202
+    fill_in 'address[street_address]', with: address.street_address
+    fill_in 'address[street_address2]', with: address.street_address2
+    fill_in 'address[city]', with: address.city
+    fill_in 'address[state]', with: address.state
+    fill_in 'address[zip_code]', with: address.zip_code
     click_on 'Create Address'
 
     expect(page).to have_current_path(user_addresses_path(user))
     expect(page).to have_content('Successfully Created Address')
-    expect(page).to have_content('123 Fake St')
-    expect(page).to have_content('Apartment 4')
-    expect(page).to have_content('Denver')
-    expect(page).to have_content('Colorado')
-    expect(page).to have_content('80202')
+    expect(page).to have_content(address.street_address)
   end
 
   scenario 'can be edited' do

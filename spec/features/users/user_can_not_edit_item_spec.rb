@@ -3,14 +3,8 @@ require 'rails_helper'
 RSpec.feature "User", type: :feature do
   before(:each) do
     user = create(:user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     create_list(:item, 5)
-    @item1 = Item.first
-    @item2 = Item.last
-
-    visit(login_path)
-    fill_in "user[username]", with: user.username
-    fill_in "user[password]", with: user.password
-    click_on('Submit Login')
   end
 
   scenario "can't see edit path" do
@@ -20,7 +14,8 @@ RSpec.feature "User", type: :feature do
   end
 
   scenario "gets 404 when trying to edit item" do
-    visit edit_admin_item_path(@item1)
+    item = Item.first
+    visit edit_admin_item_path(item)
 
     expect(page).to have_content("The page you were looking for doesn't exist.")
   end

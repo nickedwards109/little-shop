@@ -1,4 +1,4 @@
-class Admin::ItemsController < AuthenticateAdminController
+class Admin::ItemsController < AuthorizedAdminController
   before_action :set_item, only: [:edit, :update]
 
   def index

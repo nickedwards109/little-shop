@@ -1,4 +1,4 @@
-class AddressesController < AuthenticateUserController
+class AddressesController < AuthorizedUserController
   before_action :set_address, only: [:edit, :update, :destroy]
   before_action :set_user, only: [:new, :index, :create, :index, :edit]
 
@@ -7,9 +7,9 @@ class AddressesController < AuthenticateUserController
   end
 
   def create
-    address = @user.addresses.create(address_params)
-
-    if address
+    address = @user.addresses.new(address_params)
+    
+    if address.save
       redirect_to user_addresses_path, notice: 'Successfully Created Address'
     else
       flash[:notice] = 'Unable to Create Address'

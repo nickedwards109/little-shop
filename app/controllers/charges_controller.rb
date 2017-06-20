@@ -10,16 +10,15 @@ class ChargesController < ApplicationController
       :source  => params[:stripeToken]
     )
 
-    charge = Stripe::Charge.create(
+    Stripe::Charge.create(
       :customer    => customer.id,
-      :amount      => @amount_cents.to_i,
+      :amount      => @amount_in_cents.to_i,
       :description => 'Rails Stripe customer',
       :currency    => 'usd'
     )
 
-    Order.create(user_id: session[:user_id])
-    Order.last.add_items(@cart.contents)
-    session[:cart] = {}
+    create_order
+    reset_cart
     redirect_to order_path(Order.last)
 
     rescue Stripe::CardError => e
@@ -27,11 +26,19 @@ class ChargesController < ApplicationController
       redirect_to new_charge_path
   end
 
-
   private
 
+  def create_order
+    Order.create(user_id: session[:user_id])
+    Order.last.add_items(@cart.contents)
+  end
+
+  def reset_cart
+    session[:cart] = {}
+  end
+
   def set_order_amount
-    @amount_dollars = @cart.total_dollar_amount
-    @amount_cents = @amount_dollars * 100
+    amount = @cart.total_dollar_amount
+    @amount_in_cents = amount * 100
   end
 end
