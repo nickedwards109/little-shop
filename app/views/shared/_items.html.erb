@@ -11,9 +11,9 @@
             <%= number_to_currency(item.price) %>
           </div>
           <div class="card-action item_<%= item.id %>">
-            <%= link_to  "#{item.title}", category_item_path(item.category, item), class: "waves-effect waves-light btn" %>
+            <%= link_to "More Info", category_item_path(item.category, item), class: "waves-effect waves-light btn" %>
             <% if item.retired? %>
-              <a class="btn disabled">tem Retired</a>
+              <a class="btn disabled">Item Retired</a>
             <% else %>
               <%= button_to "Add to Cart", carts_path(item_id: item.id), method: :post, class: "waves-effect waves-light btn"%>
             <% end %>

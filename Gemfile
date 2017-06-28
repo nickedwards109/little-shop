@@ -17,7 +17,7 @@ gem 'haml'
 gem 'html2haml'
 gem 'will_paginate'
 gem 'autoprefixer-rails'
-gem 'materialize-sass'
+gem 'materialize-sass', :git => 'https://github.com/mkhairi/materialize-sass'
 gem 'jquery-rails'
 gem "breadcrumbs_on_rails"
 gem 'bootstrap_form'
