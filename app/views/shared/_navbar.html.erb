@@ -21,7 +21,7 @@
       <li><a class="dropdown-button" href="/categories" data-beloworigin="true" data-activates="dropdown-categories">Categories<i class="material-icons right">arrow_drop_down</i></a></li>
       <% if session[:user_id] %>
         <% user = current_user %>
-        <li>Logged in as <%= link_to "#{user.username}", dashboard_path %></li>
+        <li><%= link_to "Dashboard", dashboard_path %></li>
         <li class="active">
           <%= link_to "Logout", login_path, method: "delete" %>
         </li>
@@ -66,13 +66,17 @@
       </li>
     </ul>
   </div>
-</nav>
-<div class="row">
-  <div class="input-field col s12">
-    <input type="text" id="autocomplete" class="autocomplete inputFields">
-    <label for="autocomplete">Autocomplete</label>
+  <div class="nav-content">
+    <%= form_tag(items_path, method: "get", id: "search autocomplete", type: "search", class: "autocomplete inputFields") do %>
+      <div class="input-field">
+        <input name="search" id="search autocomplete" type="search" class="autocomplete inputFields" autocomplete="off">
+        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+        <i class="material-icons">close</i>
+      </div>
+    <% end %>
+    </form>
   </div>
-</div>
+</nav>
 
 <%# js goes below %>
 <script>
