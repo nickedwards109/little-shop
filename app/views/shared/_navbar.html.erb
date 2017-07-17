@@ -13,7 +13,7 @@
   <% end %>
 </ul>
 
-<nav class="nav-extended pink accent-2">
+<nav class="nav-extended black">
   <div class="nav-wrapper">
     <a class="brand-logo" href="/">Store</a>
     <a href="#" data-activates="mobile-menu" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -69,7 +69,7 @@
   <div class="nav-content">
     <%= form_tag(items_path, method: "get", id: "search autocomplete", type: "search", class: "autocomplete inputFields") do %>
       <div class="input-field">
-        <input name="search" id="search autocomplete" type="search" class="autocomplete inputFields" autocomplete="off">
+        <input name="search" id="search autocomplete" type="search" class="search_items autocomplete inputFields" autocomplete="off">
         <label class="label-icon" for="search"><i class="material-icons">search</i></label>
         <i class="material-icons">close</i>
       </div>

@@ -15,7 +15,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'haml'
 gem 'html2haml'
-gem 'will_paginate'
+gem 'will_paginate-materialize', github: 'harrybournis/will_paginate-materialize'
 gem 'autoprefixer-rails'
 gem 'materialize-sass', :git => 'https://github.com/mkhairi/materialize-sass'
 gem 'jquery-rails'
@@ -36,6 +36,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'selenium-webdriver'
   gem 'capybara', '~> 2.13.0'
+  gem 'brakeman', :require => false
 end
 
 group :development do

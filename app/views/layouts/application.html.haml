@@ -9,10 +9,10 @@
     = javascript_include_tag 'application'
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
 
-  %body
+  %body.black
     = render partial: 'shared/navbar'
     - flash.each do |type, message|
-      = javascript_tag "Materialize.toast('#{message}', 4000, 'rounded')"
-    .container
+      = javascript_tag "Materialize.toast('#{message}', 1000, '#{type}')"
+    .container.black
       = yield
     = render partial: 'shared/footer'
