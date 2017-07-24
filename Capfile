@@ -19,6 +19,7 @@ require 'capistrano/bundler'
 require 'capistrano/rails/assets'
 require 'capistrano/rails/migrations'
 require 'capistrano/nginx'
+require 'capistrano/puma'
 
 # Include tasks from other gems included in your Gemfile
 #
